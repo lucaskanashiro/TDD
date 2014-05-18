@@ -6,7 +6,7 @@ import org.junit.Test;
 public class TestLine2D {
 
 	@Test(expected=EqualPointsException.class)
-	public void testLineCreation() {
+	public void testLineCreation() throws EqualPointsException {
 		Line2d line = new Line2d(1, 2, 1, 2, 3, 4, 3, 4);
 	}
 
