@@ -40,4 +40,11 @@ public class TestConverter {
 	public void testIntToRomanWithNegativeArgument(){
 		converter.intToRoman(-5);
 	}
+	
+	@Test
+	public void testIntToRoman(){
+		assertEquals("XXI", converter.intToRoman(21));
+		assertEquals("XIX", converter.intToRoman(19));
+		assertEquals("MDCLXVI", converter.intToRoman(1666));
+	}
 }

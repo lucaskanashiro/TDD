@@ -51,10 +51,11 @@ public class Converter {
 		return true;
 	}
 
-	public void intToRoman(int number) {
+	public String intToRoman(int number) {
 		if(number <= 0)
 			throw new IllegalArgumentException();
 		
+		return "";
 	}
 
 }
