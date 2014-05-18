@@ -14,8 +14,12 @@ public class TestConverter {
 	}
 	
 	@Test(expected=IllegalArgumentException.class)
-	public void testRomanToIntException() {
-		converter.romanToInt(123);
+	public void testRomanToIntEmptyString() {
+		converter.romanToInt("");
 	}
 
+	@Test(expected=IllegalArgumentException.class)
+	public void testRomanToIntNonRomanNumber() {
+		converter.romanToInt("123");
+	}
 }
