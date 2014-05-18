@@ -38,4 +38,12 @@ public class TestLine2D {
 		line = new Line2d(1, 2, 1, 3, 3, 1, 4, 2);
 		assertFalse(line.parallelInX());
 	}
+	
+	@Test
+	public void testCalculateAngularFactor() throws EqualPointsException{
+		line = new Line2d(1, 2, 3, 4, 5, 6, 7, 8);
+		
+		assertEquals(1, line.calcAngularFactor1());
+		assertEquals(1, line.calcAngularFactor2());
+	}
 }

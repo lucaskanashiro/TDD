@@ -39,4 +39,14 @@ public class Line2d {
 			return false;
 	}
 
+	public int calcAngularFactor1() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	public int calcAngularFactor2() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 }
