@@ -30,4 +30,14 @@ public class TestConverter {
 		assertEquals(14, converter.romanToInt("XIV"));
 		assertEquals(4, converter.romanToInt("IV"));
 	}
+	
+	@Test(expected=IllegalArgumentException.class)
+	public void testIntToRomanWithZeroArgument(){
+		converter.intToRoman(0);
+	}
+	
+	@Test(expected=IllegalArgumentException.class)
+	public void testIntToRomanWithNegativeArgument(){
+		converter.intToRoman(-5);
+	}
 }
