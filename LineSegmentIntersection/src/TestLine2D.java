@@ -1,72 +1,63 @@
 import static org.junit.Assert.*;
 
+import java.awt.Point;
+
+import org.junit.Before;
 import org.junit.Test;
 
 
 public class TestLine2D {
 	
-	private Line2d line;
+	private Line2d line, line2;
+	private Point a, b, c, d;
+	
+	@Before
+	public void setUp(){
+		a = new Point();
+		b = new Point();
+		c = new Point();
+		d = new Point();
+	}
 
 	@Test(expected=EqualPointsException.class)
 	public void testLineCreation() throws EqualPointsException {
-		line = new Line2d(1, 2, 1, 2, 3, 4, 3, 4);
+		a.setLocation(1, 2);
+		b.setLocation(1, 2);
+		line = new Line2d(a, b);
 	}
 
 	@Test
-	public void testEqualSegments() throws EqualPointsException{
-		line = new Line2d(1, 2, 3, 4, 1, 2, 3, 4);
-		assertTrue(line.equalSegments());
-		
-		line = new Line2d(1, 2, 3, 4, 5, 6, 7, 8);
-		assertFalse(line.equalSegments());
-	}
-	
-	@Test
-	public void testSegmentsParallelInAxisY() throws EqualPointsException{
-		line = new Line2d(1, 2, 1, 3, 2, 1, 2, 2);
-		assertTrue(line.parallelInY());
-		
-		line = new Line2d(1, 2, 1, 3, 3, 1, 4, 2);
-		assertFalse(line.parallelInY());
-	}
-	
-	@Test
-	public void testSegmentsParallelInAxisX() throws EqualPointsException{
-		line = new Line2d(1, 2, 3, 2, 1, 4, 3, 4);
-		assertTrue(line.parallelInX());
-		
-		line = new Line2d(1, 2, 1, 3, 3, 1, 4, 2);
-		assertFalse(line.parallelInX());
-	}
-	
-	@Test
 	public void testCalculateAngularFactor() throws EqualPointsException{
-		line = new Line2d(1, 2, 3, 4, 5, 6, 7, 8);
+		a.setLocation(1, 2);
+		b.setLocation(3, 4);
+		line = new Line2d(a, b);
 		
-		assertEquals(1, line.calcAngularFactor1());
-		assertEquals(1, line.calcAngularFactor2());
+		assertEquals(1, line.calcAngularFactor());
 	}
 	
 	@Test(expected=IllegalArgumentException.class)
-	public void testCalculateAngularFactor1WithDivisionByZero() throws EqualPointsException{
-		line = new Line2d(1, 2, 1, 4, 5, 6, 7, 8);
+	public void testCalculateAngularFactorWithDivisionByZero() throws EqualPointsException{
+		a.setLocation(1, 2);
+		b.setLocation(1, 4);
+		line = new Line2d(a, b);
 		
-		line.calcAngularFactor1();
-	}
-	
-	@Test(expected=IllegalArgumentException.class)
-	public void testCalculateAngularFactor2WithDivisionByZero() throws EqualPointsException{
-		line = new Line2d(1, 2, 3, 4, 5, 6, 5, 8);
-		
-		line.calcAngularFactor2();
+		line.calcAngularFactor();
 	}
 	
 	@Test
 	public void testIsIntersection() throws EqualPointsException{
-		line = new Line2d(1, 2, 3, 4, 5, 6, 7, 8);
-		assertFalse(line.isIntersetcion());
+		a.setLocation(1, 2);
+		b.setLocation(3, 4);
+		line = new Line2d(a, b);
 		
-		line = new Line2d(1, 2, 3, 4, 5, 6, 5, 8);
-		assertTrue(line.isIntersetcion());
+		c.setLocation(5, 6);
+		d.setLocation(7, 8);
+		line2 = new Line2d(c, d);
+		
+		assertFalse(line.intersection(line2));
+		
+		d.setLocation(5, 8);
+		
+		assertTrue(line.intersection(line2));
 	}
 }

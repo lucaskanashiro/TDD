@@ -1,65 +1,41 @@
+import java.awt.Point;
+
 
 public class Line2d {
 	
-	private int x1, y1, x2, y2, x3, y3, x4, y4; 
+	private Point a, b; 
 
-	public Line2d(int _x1, int _y1, int _x2, int _y2, int _x3, int _y3, int _x4, int _y4) throws EqualPointsException {
-		if(((_x1 == _x2) && (_y1 == _y2)) || ((_x3 == _x4) && (_y3 == _y4))){
+	public Line2d(Point _a, Point _b) throws EqualPointsException {
+		if(_a.equals(_b)){
 			throw new EqualPointsException();
 		}
 		
-		this.x1 = _x1;
-		this.y1 = _y1;
-		this.x2 = _x2;
-		this.y2 = _y2;
-		this.x3 = _x3;
-		this.y3 = _y3;
-		this.x4 = _x4;
-		this.y4 = _y4;
+		this.a = _a;
+		this.b = _b;
+	}
+	
+	public Point getA() {
+		return a;
 	}
 
-	public boolean equalSegments() {
-		if(x1 == x3 && y1 == y3 && x2 == x4 && y2 == y4)
-			return true;
-		else
-			return false;
+	public Point getB() {
+		return b;
 	}
 
-	public boolean parallelInY() {
-		if(x1 == x2)
-			return (x3 == x4 && x1 != x3);
-		else
-			return false;
-	}
-
-	public boolean parallelInX() {
-		if(y1 == y2)
-			return (y3 == y4 && y1 != y3);
-		else
-			return false;
-	}
-
-	public int calcAngularFactor1() {
-		if(x2 == x1){
+	public int calcAngularFactor() {
+		if(this.b.x == this.a.x){
 			throw new IllegalArgumentException();
 		}
-		return ((y2-y1)/(x2-x1));
+		return ((this.b.y - this.a.y)/(this.b.x - this.a.x));
 	}
 
-	public int calcAngularFactor2() {
-		if(x4 == x3){
-			throw new IllegalArgumentException();
-		}
-		return ((y4-y3)/(x4-x3));
-	}
-
-	public boolean isIntersetcion() {
-		if(parallelInY() || parallelInX())
-			return false;
-		else if(x3 == x4 || y3 == y4)
+	public boolean intersection(Line2d line) {
+		if(this.a.x == this.b.x)
+			return !(line.getA().x == line.getB().x && this.a.x != line.getA().x);
+		else if(line.getA().x == line.getB().x)
 			return true;
 		else
-			return calcAngularFactor1() != calcAngularFactor2();
+			return this.calcAngularFactor() != line.calcAngularFactor();
 	}
 
 }
