@@ -51,8 +51,9 @@ public class Converter {
 		return true;
 	}
 
-	public void intToRoman(int i) {
-		// TODO Auto-generated method stub
+	public void intToRoman(int number) {
+		if(number <= 0)
+			throw new IllegalArgumentException();
 		
 	}
 
