@@ -40,13 +40,11 @@ public class Line2d {
 	}
 
 	public int calcAngularFactor1() {
-		// TODO Auto-generated method stub
-		return 0;
+		return ((y2-y1)/(x2-x1));
 	}
 
 	public int calcAngularFactor2() {
-		// TODO Auto-generated method stub
-		return 0;
+		return ((y4-y3)/(x4-x3));
 	}
 
 }
