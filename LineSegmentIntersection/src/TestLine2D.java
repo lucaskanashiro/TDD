@@ -20,4 +20,13 @@ public class TestLine2D {
 		line = new Line2d(1, 2, 3, 4, 5, 6, 7, 8);
 		assertFalse(line.equalSegments());
 	}
+	
+	@Test
+	public void testSegmentsParallelInAxisY() throws EqualPointsException{
+		line = new Line2d(1, 2, 1, 3, 2, 1, 2, 2);
+		assertTrue(line.parallelInY());
+		
+		line = new Line2d(1, 2, 1, 3, 3, 1, 4, 2);
+		assertFalse(line.parallelInY());
+	}
 }

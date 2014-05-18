@@ -25,4 +25,9 @@ public class Line2d {
 			return false;
 	}
 
+	public boolean parallelInY() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 }
