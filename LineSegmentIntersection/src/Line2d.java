@@ -48,8 +48,12 @@ public class Line2d {
 	}
 
 	public boolean isIntersetcion() {
-		// TODO Auto-generated method stub
-		return false;
+		if(parallelInY() || parallelInX())
+			return false;
+		else if(x3 == x4 || y3 == y4)
+			return true;
+		else
+			return calcAngularFactor1() != calcAngularFactor2();
 	}
 
 }
