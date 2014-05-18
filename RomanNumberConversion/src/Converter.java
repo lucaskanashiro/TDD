@@ -6,11 +6,11 @@ public class Converter {
 	
 	public Converter(){}
 	
-	public void romanToInt(String number) throws IllegalArgumentException{
+	public int romanToInt(String number) throws IllegalArgumentException{
 		if(number.length() == 0 || !allCharactersInRange(number))
 			throw new IllegalArgumentException();
 		
-		
+		return 0;
 	}
 
 	private boolean allCharactersInRange(String number) {

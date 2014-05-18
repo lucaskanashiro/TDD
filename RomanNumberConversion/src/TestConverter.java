@@ -22,4 +22,10 @@ public class TestConverter {
 	public void testRomanToIntNonRomanNumber() {
 		converter.romanToInt("123");
 	}
+	
+	@Test
+	public void testRomanToInt(){
+		assertEquals(10, converter.romanToInt("X"));
+		assertEquals(16, converter.romanToInt("XVI"));
+	}
 }
