@@ -40,10 +40,16 @@ public class Line2d {
 	}
 
 	public int calcAngularFactor1() {
+		if(x2 == x1){
+			throw new IllegalArgumentException();
+		}
 		return ((y2-y1)/(x2-x1));
 	}
 
 	public int calcAngularFactor2() {
+		if(x4 == x3){
+			throw new IllegalArgumentException();
+		}
 		return ((y4-y3)/(x4-x3));
 	}
 

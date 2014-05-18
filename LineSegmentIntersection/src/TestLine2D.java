@@ -47,6 +47,20 @@ public class TestLine2D {
 		assertEquals(1, line.calcAngularFactor2());
 	}
 	
+	@Test(expected=IllegalArgumentException.class)
+	public void testCalculateAngularFactor1WithDivisionByZero() throws EqualPointsException{
+		line = new Line2d(1, 2, 1, 4, 5, 6, 7, 8);
+		
+		line.calcAngularFactor1();
+	}
+	
+	@Test(expected=IllegalArgumentException.class)
+	public void testCalculateAngularFactor2WithDivisionByZero() throws EqualPointsException{
+		line = new Line2d(1, 2, 3, 4, 5, 6, 5, 8);
+		
+		line.calcAngularFactor2();
+	}
+	
 	@Test
 	public void testIsIntersection() throws EqualPointsException{
 		line = new Line2d(1, 2, 3, 4, 5, 6, 7, 8);
