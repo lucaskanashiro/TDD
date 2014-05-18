@@ -27,5 +27,7 @@ public class TestConverter {
 	public void testRomanToInt(){
 		assertEquals(10, converter.romanToInt("X"));
 		assertEquals(16, converter.romanToInt("XVI"));
+		assertEquals(14, converter.romanToInt("XIV"));
+		assertEquals(4, converter.romanToInt("IV"));
 	}
 }

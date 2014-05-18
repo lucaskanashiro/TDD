@@ -1,16 +1,40 @@
 
+import java.util.HashMap;
+
 
 public class Converter {
 
 	private String roman = "IVXLCDM";
 	
-	public Converter(){}
+	private HashMap<Character,Integer> roman_numerals = new HashMap<Character,Integer>();
+	
+	public Converter(){
+		this.roman_numerals.put('M', 1000);
+		this.roman_numerals.put('D', 500);
+		this.roman_numerals.put('C', 100);
+		this.roman_numerals.put('L', 50);
+		this.roman_numerals.put('X', 10);
+		this.roman_numerals.put('V', 5);
+		this.roman_numerals.put('I', 1);
+	}
 	
 	public int romanToInt(String number) throws IllegalArgumentException{
 		if(number.length() == 0 || !allCharactersInRange(number))
 			throw new IllegalArgumentException();
 		
-		return 0;
+		int result=0, i=0, maxSize = number.length();
+		
+		while(i < maxSize){
+			if(((i+1) < maxSize) && (roman_numerals.get(number.charAt(i+1)) > roman_numerals.get(number.charAt(i)))){
+				result += (roman_numerals.get(number.charAt(i+1)) - roman_numerals.get(number.charAt(i)));
+				i+=2;
+			}else{
+				result += roman_numerals.get(number.charAt(i));
+				i++;
+			}
+		}
+		
+		return result;
 	}
 
 	private boolean allCharactersInRange(String number) {
