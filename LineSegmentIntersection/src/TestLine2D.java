@@ -29,4 +29,13 @@ public class TestLine2D {
 		line = new Line2d(1, 2, 1, 3, 3, 1, 4, 2);
 		assertFalse(line.parallelInY());
 	}
+	
+	@Test
+	public void testSegmentsParallelInAxisX() throws EqualPointsException{
+		line = new Line2d(1, 2, 3, 2, 1, 4, 3, 4);
+		assertTrue(line.parallelInX());
+		
+		line = new Line2d(1, 2, 1, 3, 3, 1, 4, 2);
+		assertFalse(line.parallelInX());
+	}
 }

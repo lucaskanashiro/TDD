@@ -32,4 +32,9 @@ public class Line2d {
 			return false;
 	}
 
+	public boolean parallelInX() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 }
