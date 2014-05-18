@@ -33,8 +33,10 @@ public class Line2d {
 	}
 
 	public boolean parallelInX() {
-		// TODO Auto-generated method stub
-		return false;
+		if(y1 == y2)
+			return (y3 == y4 && y1 != y3);
+		else
+			return false;
 	}
 
 }
