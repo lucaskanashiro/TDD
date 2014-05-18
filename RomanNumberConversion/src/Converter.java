@@ -4,8 +4,6 @@ import java.util.HashMap;
 
 public class Converter {
 
-	private String roman = "IVXLCDM";
-	
 	private HashMap<Character,Integer> roman_numerals = new HashMap<Character,Integer>();
 	
 	public Converter(){
@@ -43,8 +41,8 @@ public class Converter {
 		for(int i=0; i<number.length(); i++){
 			ok = false;
 			
-			for(int j=0; j<roman.length(); j++){
-				if(number.charAt(i) == roman.charAt(j)) ok = true;
+			for(char character_roman : roman_numerals.keySet()){
+				if(number.charAt(i) == character_roman) ok = true;
 			}
 			
 			if(!ok) return false;
