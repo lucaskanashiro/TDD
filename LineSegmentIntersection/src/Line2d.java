@@ -18,4 +18,11 @@ public class Line2d {
 		this.y4 = _y4;
 	}
 
+	public boolean equalSegments() {
+		if(x1 == x3 && y1 == y3 && x2 == x4 && y2 == y4)
+			return true;
+		else
+			return false;
+	}
+
 }

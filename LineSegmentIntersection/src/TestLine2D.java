@@ -14,5 +14,8 @@ public class TestLine2D {
 	public void testEqualSegments() throws EqualPointsException{
 		Line2d line = new Line2d(1, 2, 3, 4, 1, 2, 3, 4);
 		assertTrue(line.equalSegments());
+		
+		line = new Line2d(1, 2, 3, 4, 5, 6, 7, 8);
+		assertFalse(line.equalSegments());
 	}
 }
