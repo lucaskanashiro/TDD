@@ -7,9 +7,13 @@ public class Converter {
 	public Converter(){}
 	
 	public void romanToInt(String number) throws IllegalArgumentException{
-		if(number.length() == 0)
+		if(number.length() == 0 || !allCharactersInRange(number))
 			throw new IllegalArgumentException();
 		
+		
+	}
+
+	private boolean allCharactersInRange(String number) {
 		boolean ok;
 		
 		for(int i=0; i<number.length(); i++){
@@ -19,8 +23,10 @@ public class Converter {
 				if(number.charAt(i) == roman.charAt(j)) ok = true;
 			}
 			
-			if(!ok) throw new IllegalArgumentException();
+			if(!ok) return false;
 		}
+		
+		return true;
 	}
 
 }
