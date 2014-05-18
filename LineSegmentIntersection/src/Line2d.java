@@ -26,8 +26,10 @@ public class Line2d {
 	}
 
 	public boolean parallelInY() {
-		// TODO Auto-generated method stub
-		return false;
+		if(x1 == x2)
+			return (x3 == x4 && x1 != x3);
+		else
+			return false;
 	}
 
 }
