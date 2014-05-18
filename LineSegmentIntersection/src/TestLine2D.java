@@ -46,4 +46,13 @@ public class TestLine2D {
 		assertEquals(1, line.calcAngularFactor1());
 		assertEquals(1, line.calcAngularFactor2());
 	}
+	
+	@Test
+	public void testIsIntersection() throws EqualPointsException{
+		line = new Line2d(1, 2, 3, 4, 5, 6, 7, 8);
+		assertFalse(line.isIntersetcion());
+		
+		line = new Line2d(1, 2, 3, 4, 5, 6, 5, 8);
+		assertTrue(line.isIntersetcion());
+	}
 }

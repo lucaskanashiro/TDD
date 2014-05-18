@@ -47,4 +47,9 @@ public class Line2d {
 		return ((y4-y3)/(x4-x3));
 	}
 
+	public boolean isIntersetcion() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 }
