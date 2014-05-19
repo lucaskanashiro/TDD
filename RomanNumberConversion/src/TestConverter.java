@@ -41,6 +41,11 @@ public class TestConverter {
 		converter.intToRoman(-5);
 	}
 	
+	@Test(expected=IllegalArgumentException.class)
+	public void testIntToRomanWithHighArgument(){
+		converter.intToRoman(4000);
+	}
+	
 	@Test
 	public void testIntToRoman(){
 		assertEquals("XXI", converter.intToRoman(21));

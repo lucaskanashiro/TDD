@@ -55,7 +55,7 @@ public class Converter {
 	}
 
 	public String intToRoman(int number) {
-		if(number <= 0)
+		if(number <= 0 || number >= 4000)
 			throw new IllegalArgumentException();
 		
 		String result = "";
