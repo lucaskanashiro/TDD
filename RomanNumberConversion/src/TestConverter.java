@@ -23,9 +23,19 @@ public class TestConverter {
 	}
 	
 	@Test
-	public void testRomanToInt(){
+	public void testConvertRomanToIntASimpleNumber(){
 		assertEquals(10, converter.romanToInt("X"));
+		assertEquals(1000, converter.romanToInt("M"));
+	}
+	
+	@Test
+	public void testConvertRomanToIntACompoundNumber(){
 		assertEquals(16, converter.romanToInt("XVI"));
+		assertEquals(22, converter.romanToInt("XXII"));
+	}
+	
+	@Test
+	public void testConvertRomanToIntASpecialNumber(){
 		assertEquals(14, converter.romanToInt("XIV"));
 		assertEquals(4, converter.romanToInt("IV"));
 	}
@@ -46,9 +56,18 @@ public class TestConverter {
 	}
 	
 	@Test
-	public void testIntToRoman(){
+	public void testConvertIntToRomanASimpleNumber(){
+		assertEquals("X", converter.intToRoman(10));
+	}
+	
+	@Test
+	public void testConvertIntToRomanACompoundNumber(){
 		assertEquals("XXI", converter.intToRoman(21));
-		assertEquals("XIX", converter.intToRoman(19));
 		assertEquals("MDCLXVI", converter.intToRoman(1666));
+	}
+	
+	@Test
+	public void testConvertIntToRomanASpecialNumber(){
+		assertEquals("XIX", converter.intToRoman(19));
 	}
 }
