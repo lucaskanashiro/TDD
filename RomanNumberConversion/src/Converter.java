@@ -6,6 +6,9 @@ public class Converter {
 
 	private HashMap<Character,Integer> roman_numerals = new HashMap<Character,Integer>();
 	
+	private static int[] numbers = {1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1};
+    private static String[] letters = {"M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"};
+	
 	public Converter(){
 		this.roman_numerals.put('M', 1000);
 		this.roman_numerals.put('D', 500);
@@ -55,7 +58,16 @@ public class Converter {
 		if(number <= 0)
 			throw new IllegalArgumentException();
 		
-		return "";
+		String result = "";
+		
+		for(int i=0; i<numbers.length; i++){
+			while(number >= numbers[i]){
+				result += letters[i];
+				number -= numbers[i];
+			}
+		}
+		
+		return result;
 	}
 
 }
