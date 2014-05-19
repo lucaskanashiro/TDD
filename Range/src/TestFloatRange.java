@@ -7,10 +7,26 @@ public class TestFloatRange {
 
 	@Test
 	public void testCreationFloatRange() {
-		FloatRange range = new FloatRange(1.1, 1.9);
+		FloatRange range = new FloatRange((float)1.1, (float)1.9);
 		
-		assertEquals(1.1, range.getMinimum());
-		assertEquals(1.9, range.getMaximum());
+		assertEquals((float)1.1, range.getMinimum(), 0.0001);
+		assertEquals((float)1.9, range.getMaximum(), 0.0001);
 	}
 
+	@Test
+	public void testCheckNumberInRange(){
+		FloatRange range = new FloatRange((float)1.1, (float)1.9);
+		
+		assertTrue(range.inRange((float)1.4));
+		assertFalse(range.inRange((float)2.0));
+	}
+	
+	@Test(expected=RangeNullException.class)
+	public void testTwoRangesWithoutIntersection(){
+		FloatRange range1 = new FloatRange((float)1.1, (float)1.9);
+		FloatRange range2 = new FloatRange((float)3.1, (float)3.9);
+		
+		@SuppressWarnings("unused")
+		FloatRange range = range1.intersectionWith(range2);
+	}
 }
