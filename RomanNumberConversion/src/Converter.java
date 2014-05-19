@@ -1,22 +1,21 @@
-
-import java.util.HashMap;
-
-
 public class Converter {
 
-	private HashMap<Character,Integer> roman_numerals = new HashMap<Character,Integer>();
+	private int[] numbers = {1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1};
+    private String[] letters = {"M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"};
 	
-	private static int[] numbers = {1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1};
-    private static String[] letters = {"M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"};
+	public Converter(){}
 	
-	public Converter(){
-		this.roman_numerals.put('M', 1000);
-		this.roman_numerals.put('D', 500);
-		this.roman_numerals.put('C', 100);
-		this.roman_numerals.put('L', 50);
-		this.roman_numerals.put('X', 10);
-		this.roman_numerals.put('V', 5);
-		this.roman_numerals.put('I', 1);
+	private int decodeRomanCharacter(char letter){
+		switch(letter){
+			case 'M': return 1000;
+			case 'D': return 500;
+			case 'C': return 100;
+			case 'L': return 50;
+			case 'X': return 10;
+			case 'V': return 5;
+			case 'I': return 1;
+			default: return 0;
+		}
 	}
 	
 	public int romanToInt(String number) throws IllegalArgumentException{
@@ -26,14 +25,15 @@ public class Converter {
 		int result=0, i=0, maxSize = number.length();
 		
 		while(i < maxSize){
-			if(((i+1) < maxSize) && (roman_numerals.get(number.charAt(i+1)) > roman_numerals.get(number.charAt(i)))){
-				result += (roman_numerals.get(number.charAt(i+1)) - roman_numerals.get(number.charAt(i)));
+			if(((i+1) < maxSize) && (decodeRomanCharacter(number.charAt(i+1)) > decodeRomanCharacter(number.charAt(i)))){
+				result += (decodeRomanCharacter(number.charAt(i+1)) - decodeRomanCharacter(number.charAt(i)));
 				i+=2;
 			}else{
-				result += roman_numerals.get(number.charAt(i));
+				result += decodeRomanCharacter(number.charAt(i));
 				i++;
 			}
-		}
+					
+		}		
 		
 		return result;
 	}
@@ -69,5 +69,4 @@ public class Converter {
 		
 		return result;
 	}
-
 }
