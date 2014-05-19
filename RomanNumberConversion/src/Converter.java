@@ -43,9 +43,9 @@ public class Converter {
 		
 		for(int i=0; i<number.length(); i++){
 			ok = false;
-			
-			for(char character_roman : roman_numerals.keySet()){
-				if(number.charAt(i) == character_roman) ok = true;
+
+			for(String character_roman : letters){
+				if(Character.toString(number.charAt(i)).equals(character_roman)) ok = true;
 			}
 			
 			if(!ok) return false;
