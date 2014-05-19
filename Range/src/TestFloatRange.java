@@ -9,8 +9,8 @@ public class TestFloatRange {
 	public void testCreationFloatRange() {
 		FloatRange range = new FloatRange((float)1.1, (float)1.9);
 		
-		assertEquals((float)1.1, range.getMinimum(), 0.0001);
-		assertEquals((float)1.9, range.getMaximum(), 0.0001);
+		assertEquals((float)1.1, range.getMinimum(), 0.1);
+		assertEquals((float)1.9, range.getMaximum(), 0.1);
 	}
 
 	@Test
@@ -31,10 +31,13 @@ public class TestFloatRange {
 	}
 	
 	@Test
-	public void testTwoRangesWithIntersection(){
+	public void testTwoRangesWithIntersection() throws RangeNullException{
 		FloatRange range1 = new FloatRange((float)1.1, (float)1.9);
 		FloatRange range2 = new FloatRange((float)1.1, (float)1.5);
 	
-		assertEquals((float)1.1, range1.intersectionWith(range2));
+		FloatRange range = range1.intersectionWith(range2);
+		
+		assertEquals((float)1.1, range.getMinimum(), 0.1);
+		assertEquals((float)1.5, range.getMaximum(), 0.1);
 	}
 }

@@ -32,16 +32,15 @@ public class FloatRange {
 			for(float j=range2.getMinimum(); j<=range2.getMaximum(); j+=0.1){
 				if(i == j){
 					find = true;
-					if(i < min){
+					if(i < min)
 						min = i;
-					if(i > max){
+					if(i > max)
 						max = i;
-					}
-					}
 				}
 				
 			}
 		}
+		
 		if (!find)
 			throw new RangeNullException();
 		

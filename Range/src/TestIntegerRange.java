@@ -21,10 +21,18 @@ public class TestIntegerRange {
 	}
 	
 	@Test
-	public void testIntersectionOfTwoRanges(){
+	public void testExistingIntersectionOfTwoRanges(){
 		IntegerRange range1 = new IntegerRange(0,10);
 		IntegerRange range2 = new IntegerRange(2,8);
 		
-		assertTrue(range1.intersectionWith(range2));
+		assertTrue(range1.existIntersection(range2));
+	}
+	
+	@Test(expected=RangeNullException.class)
+	public void testTwoRangesWithoutIntersection(){
+		IntegerRange range1 = new IntegerRange(0,10);
+		IntegerRange range2 = new IntegerRange(12,18);
+		
+		
 	}
 }
