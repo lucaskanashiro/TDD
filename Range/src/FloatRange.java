@@ -23,15 +23,29 @@ public class FloatRange {
 			return false;
 	}
 
-	public FloatRange intersectionWith(FloatRange range2) {
+	public FloatRange intersectionWith(FloatRange range2) throws RangeNullException {
 		FloatRange result;
-		float min, max;
+		float min = this.maximum, max = this.minimum;
+		boolean find = false;
 		
 		for(float i=this.minimum; i<=this.maximum; i+=0.1){
 			for(float j=range2.getMinimum(); j<=range2.getMaximum(); j+=0.1){
+				if(i == j){
+					find = true;
+					if(i < min){
+						min = i;
+					if(i > max){
+						max = i;
+					}
+					}
+				}
 				
 			}
 		}
+		if (!find)
+			throw new RangeNullException();
+		
+		result = new FloatRange(min, max);
 		
 		return result;
 	}
