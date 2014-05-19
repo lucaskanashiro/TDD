@@ -19,4 +19,12 @@ public class TestIntegerRange {
 		assertTrue(range.inRange(5));
 		assertFalse(range.inRange(15));
 	}
+	
+	@Test
+	public void testIntersectionOfTwoRanges(){
+		IntegerRange range1 = new IntegerRange(0,10);
+		IntegerRange range2 = new IntegerRange(2,8);
+		
+		assertTrue(range1.intersectionWith(range2));
+	}
 }

@@ -22,4 +22,16 @@ public class IntegerRange {
 		else
 			return false;
 	}
+
+	public boolean intersectionWith(IntegerRange range2) {
+		for(int i = this.minimum; i<= this.maximum; i++){
+			for(int j = range2.getMinimum(); j<= range2.getMaximum(); i++){
+				if(i == j)
+					return true;
+			}
+		}
+		return false;
+	}
+	
+	
 }
