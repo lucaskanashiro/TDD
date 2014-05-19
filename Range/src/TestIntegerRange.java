@@ -29,10 +29,22 @@ public class TestIntegerRange {
 	}
 	
 	@Test(expected=RangeNullException.class)
-	public void testTwoRangesWithoutIntersection(){
+	public void testTwoRangesWithoutIntersection() throws RangeNullException{
 		IntegerRange range1 = new IntegerRange(0,10);
 		IntegerRange range2 = new IntegerRange(12,18);
 		
+		@SuppressWarnings("unused")
+		IntegerRange range = range1.intersectionWith(range2);
+	}
+	
+	@Test
+	public void testTwoRangesWithIntersection() throws RangeNullException{
+		IntegerRange range1 = new IntegerRange(1,9);
+		IntegerRange range2 = new IntegerRange(1,5);
+	
+		IntegerRange range = range1.intersectionWith(range2);
 		
+		assertEquals(1, range.getMinimum());
+		assertEquals(5, range.getMaximum());
 	}
 }

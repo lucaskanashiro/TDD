@@ -40,4 +40,12 @@ public class TestFloatRange {
 		assertEquals((float)1.1, range.getMinimum(), 0.1);
 		assertEquals((float)1.5, range.getMaximum(), 0.1);
 	}
+	
+	@Test
+	public void testExistingIntersectionOfTwoRanges(){
+		FloatRange range1 = new FloatRange(0,10);
+		FloatRange range2 = new FloatRange(2,8);
+		
+		assertTrue(range1.existIntersection(range2));
+	}
 }

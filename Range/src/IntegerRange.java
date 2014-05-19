@@ -25,7 +25,7 @@ public class IntegerRange {
 
 	public boolean existIntersection(IntegerRange range2) {
 		for(int i = this.minimum; i<= this.maximum; i++){
-			for(int j = range2.getMinimum(); j<= range2.getMaximum(); i++){
+			for(int j = range2.getMinimum(); j<= range2.getMaximum(); j++){
 				if(i == j)
 					return true;
 			}

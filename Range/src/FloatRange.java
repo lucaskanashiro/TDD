@@ -22,16 +22,27 @@ public class FloatRange {
 		else
 			return false;
 	}
+	
+	public boolean existIntersection(FloatRange range2) {
+		for(float i = this.minimum; i<= this.maximum; i++){
+			for(float j = range2.getMinimum(); j<= range2.getMaximum(); j++){
+				if(i == j)
+					return true;
+			}
+		}
+		return false;
+	}
 
 	public FloatRange intersectionWith(FloatRange range2) throws RangeNullException {
+		if(!this.existIntersection(range2))
+			throw new RangeNullException();
+		
 		FloatRange result;
 		float min = this.maximum, max = this.minimum;
-		boolean find = false;
-		
+			
 		for(float i=this.minimum; i<=this.maximum; i+=0.1){
 			for(float j=range2.getMinimum(); j<=range2.getMaximum(); j+=0.1){
 				if(i == j){
-					find = true;
 					if(i < min)
 						min = i;
 					if(i > max)
@@ -40,9 +51,6 @@ public class FloatRange {
 				
 			}
 		}
-		
-		if (!find)
-			throw new RangeNullException();
 		
 		result = new FloatRange(min, max);
 		
