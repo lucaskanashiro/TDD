@@ -51,4 +51,14 @@ public class TestSQL {
 		assertEquals("update animal set name='dog' where name='cat'",
 				this.sql.update("animal", column, value, select));
 	}
+	
+	@Test
+	public void testUpdateWithMoreColumns(){
+		String[] column = {"name", "age"};
+		String[] value = {"dog", "5"};
+		String[] select = {"name", "cat", "age", "10"};
+		
+		assertEquals("update animal set name='dog',age='5' where name='cat',age='10'",
+				this.sql.update("animal", column, value, select));
+	}
 }
