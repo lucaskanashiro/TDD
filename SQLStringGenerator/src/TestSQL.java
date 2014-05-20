@@ -69,4 +69,12 @@ public class TestSQL {
 		assertEquals("delete from animal where name='cat'",
 				this.sql.delete("animal", select));
 	}
+	
+	@Test
+	public void testDeleteWithMoreColumns(){
+		String[] select = {"name", "cat", "age", "10"};
+		
+		assertEquals("delete from animal where name='cat' and age='10'",
+				this.sql.delete("animal", select));
+	}
 }
