@@ -58,7 +58,15 @@ public class TestSQL {
 		String[] value = {"dog", "5"};
 		String[] select = {"name", "cat", "age", "10"};
 		
-		assertEquals("update animal set name='dog',age='5' where name='cat',age='10'",
+		assertEquals("update animal set name='dog',age='5' where name='cat' and age='10'",
 				this.sql.update("animal", column, value, select));
+	}
+	
+	@Test
+	public void testSimpleDelete(){
+		String[] select = {"name", "cat"};
+		
+		assertEquals("delete from animal where name='cat'",
+				this.sql.delete("animal", select));
 	}
 }

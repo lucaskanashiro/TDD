@@ -60,11 +60,16 @@ public class SQL {
 			command_sql += select[0] + "='" + select[1] + "'";
 		else{
 			for(int i=0; i<select.length-3; i+=2)
-				command_sql += select[i] + "='" + select[i+1] + "',";
+				command_sql += select[i] + "='" + select[i+1] + "' and ";
 			command_sql += select[select.length-2] + "='" + select[select.length-1] + "'";
 		}
 		
 		return command_sql;
+	}
+
+	public Object delete(String string, String[] select) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
