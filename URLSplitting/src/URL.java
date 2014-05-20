@@ -10,7 +10,18 @@ public class URL {
 	}
 
 	public String getProtocol() {
-		return "https";
+		String protocol="";
+		
+		int i=0;
+		char character = this.urlText.charAt(i);
+		
+		while(character != ':'){
+			protocol += character;
+			i++;
+			character = this.urlText.charAt(i);
+		}
+		
+		return protocol;
 	}
 
 }
