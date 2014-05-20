@@ -4,13 +4,7 @@ public class SQL {
 	public String select(String table, String[] column) {
 		String command_sql = "select ";
 		
-		if(column.length == 1)
-			command_sql += column[0];
-		else{
-			for(int i=0; i<column.length-1; i++)
-				command_sql += column[i] + ",";
-			command_sql += column[column.length-1];
-		}
+		command_sql += this.printValuesInArray(column);
 		
 		command_sql += " from " + table;
 		
@@ -21,28 +15,30 @@ public class SQL {
 		String command_sql = "insert into ";
 		
 		command_sql += table + " (";
-		
-		if(column.length == 1)
-			command_sql += column[0];
-		else{
-			for(int i=0; i<column.length-1; i++)
-				command_sql += column[i] + ",";
-			command_sql += column[column.length-1];
-		}
+
+		command_sql += this.printValuesInArray(column);
 		
 		command_sql += ") values (";
 		
-		if(value.length == 1)
-			command_sql += value[0];
-		else{
-			for(int i=0; i<value.length-1; i++)
-				command_sql += value[i] + ",";
-			command_sql += value[value.length-1];
-		}
+		command_sql += this.printValuesInArray(value);
 		
 		command_sql += ")";
 		
 		return command_sql;
+	}
+	
+	private String printValuesInArray(String[] value){
+		String result="";
+		
+		if(value.length == 1)
+			result += value[0];
+		else{
+			for(int i=0; i<value.length-1; i++)
+				result += value[i] + ",";
+			result += value[value.length-1];
+		}
+		
+		return result;
 	}
 
 }
