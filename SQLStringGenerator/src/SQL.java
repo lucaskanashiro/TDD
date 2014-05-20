@@ -44,8 +44,25 @@ public class SQL {
 	public String update(String table, String[] column, String[] value, String[] select) {
 		String command_sql = "update ";
 		
-		command_sql += table + " set " + column[0] + "='" + value[0] + 
-				"' where " + select[0] + "='" + select[1] + "'";
+		command_sql += table + " set ";
+		
+		if(column.length == 1)
+			command_sql += column[0] + "='" + value[0];
+		else{
+			for(int i=0; i<column.length-1; i++)
+				command_sql += column[i] + "='" + value[i] + "',";
+			command_sql += column[column.length-1] + "='" + value[value.length-1];
+		}
+				
+		command_sql += "' where ";
+		
+		if(select.length == 2)
+			command_sql += select[0] + "='" + select[1] + "'";
+		else{
+			for(int i=0; i<select.length-3; i+=2)
+				command_sql += select[i] + "='" + select[i+1] + "',";
+			command_sql += select[select.length-2] + "='" + select[select.length-1] + "'";
+		}
 		
 		return command_sql;
 	}
