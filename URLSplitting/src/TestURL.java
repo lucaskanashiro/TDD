@@ -23,4 +23,11 @@ public class TestURL {
 		
 		assertEquals("https", this.url.getProtocol());
 	}
+	
+	@Test
+	public void testgetDomain(){
+		this.url = new URL("http://www.google.com");
+		
+		assertEquals("www.google.com", this.url.getDomain());
+	}
 }

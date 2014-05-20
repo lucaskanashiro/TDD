@@ -24,4 +24,9 @@ public class URL {
 		return protocol;
 	}
 
+	public Object getDomain() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
