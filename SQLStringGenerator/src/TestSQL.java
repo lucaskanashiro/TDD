@@ -16,13 +16,20 @@ public class TestSQL {
 	@Test
 	public void testSimpleSelect(){
 		String[] column = {"name"};
-		assertEquals("select name from animal", sql.select("animal", column));
+		assertEquals("select name from animal", this.sql.select("animal", column));
 	}
 
 	@Test
 	public void testSelectWithMoreColumns(){
 		String[] column = {"name", "age", "phylum"};
-		assertEquals("select name,age,phylum from animal", sql.select("animal", column));
+		assertEquals("select name,age,phylum from animal", this.sql.select("animal", column));
 	}
 	
+	@Test
+	public void testSimpleInsert(){
+		String[] column = {"name"};
+		String[] value = {"dog"};
+		
+		assertEquals("insert into animal (name) values (dog)", this.sql.insert("animal", column, value));
+	}
 }
