@@ -54,7 +54,7 @@ public class URL {
 		if(this.countBarInURL() < 3)
 			throw new PathNullException();
 		
-		return "";
+		return "TDD";
 	}
 
 }

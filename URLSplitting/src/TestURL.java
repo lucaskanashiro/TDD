@@ -46,9 +46,9 @@ public class TestURL {
 	}
 	
 	@Test
-	public void testgetPathWithPathInURL(){
+	public void testgetPathWithPathInURL() throws PathNullException{
 		this.url = new URL("http://www.google.com/TDD");
 		
-		assertEquals("TDD", this.url.getDomain());
+		assertEquals("TDD", this.url.getPath());
 	}
 }
