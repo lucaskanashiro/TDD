@@ -42,7 +42,12 @@ public class SQL {
 	}
 
 	public String update(String table, String[] column, String[] value, String[] select) {
-		return "update animal set name='dog' where name='cat'";
+		String command_sql = "update ";
+		
+		command_sql += table + " set " + column[0] + "='" + value[0] + 
+				"' where " + select[0] + "='" + select[1] + "'";
+		
+		return command_sql;
 	}
 
 }
