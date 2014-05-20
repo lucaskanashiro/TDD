@@ -30,6 +30,9 @@ public class URL {
 		int index = this.urlText.indexOf("://");
 		
 		for(int i=index+3; i<this.urlText.length(); i++){
+			if(this.urlText.charAt(i) == '/')
+				break;
+			
 			domain += this.urlText.charAt(i);
 		}
 		
