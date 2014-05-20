@@ -54,7 +54,15 @@ public class URL {
 		if(this.countBarInURL() < 3)
 			throw new PathNullException();
 		
-		return "TDD";
+		String path="";
+		
+		int firstIndexOfDomain = this.urlText.indexOf(this.getDomain());
+		int lastIndexOfDomain = firstIndexOfDomain + this.getDomain().length();
+		
+		for(int i=lastIndexOfDomain+1; i<this.urlText.length(); i++)
+			path += this.urlText.charAt(i);
+		
+		return path;
 	}
 
 }
