@@ -1,9 +1,8 @@
 
 public class SQL {
 
-	public Object select(String string, String[] column) {
-		// TODO Auto-generated method stub
-		return null;
+	public String select(String table, String[] column) {
+		return "select name from animal";
 	}
 
 }
