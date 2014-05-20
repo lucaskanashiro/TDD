@@ -5,9 +5,10 @@ import org.junit.Test;
 
 public class TestURL {
 
-	@Test
-	public void test() {
-		fail("Not yet implemented");
+	@Test(expected=IllegalArgumentException.class)
+	public void testCreationURLWithBlankedURL() {
+		@SuppressWarnings("unused")
+		URL url = new URL("");
 	}
 
 }
