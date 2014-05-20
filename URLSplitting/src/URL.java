@@ -27,9 +27,10 @@ public class URL {
 	public String getDomain() {
 		String domain="";
 		
-		int index = this.urlText.indexOf("://");
+		int firstIndexOfDivisor = this.urlText.indexOf("://");
+		int lastIndexOfDivisor = firstIndexOfDivisor + 3;
 		
-		for(int i=index+3; i<this.urlText.length(); i++){
+		for(int i=lastIndexOfDivisor; i<this.urlText.length(); i++){
 			if(this.urlText.charAt(i) == '/')
 				break;
 			
@@ -59,7 +60,9 @@ public class URL {
 		int firstIndexOfDomain = this.urlText.indexOf(this.getDomain());
 		int lastIndexOfDomain = firstIndexOfDomain + this.getDomain().length();
 		
-		for(int i=lastIndexOfDomain+1; i<this.urlText.length(); i++)
+		int indexAfterBar = lastIndexOfDomain + 1;
+		
+		for(int i=indexAfterBar; i<this.urlText.length(); i++)
 			path += this.urlText.charAt(i);
 		
 		return path;
