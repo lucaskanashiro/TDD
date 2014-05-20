@@ -48,7 +48,9 @@ public class TestURL {
 	@Test
 	public void testgetPathWithPathInURL() throws PathNullException{
 		this.url = new URL("http://www.google.com/TDD");
-		
 		assertEquals("TDD", this.url.getPath());
+		
+		this.url = new URL("http://www.google.com/TDD/DAS");
+		assertEquals("TDD/DAS", this.url.getPath());
 	}
 }
