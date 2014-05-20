@@ -18,6 +18,16 @@ public class SQL {
 	}
 
 	public String insert(String table, String[] column, String[] value) {
+		String command_sql = "insert into ";
+		
+		command_sql += table + " (";
+		
+		command_sql += column[0];
+		
+		command_sql += ") values (";
+		
+		command_sql += value[0] + ")";
+		
 		return "insert into animal (name) values (dog)";
 	}
 
