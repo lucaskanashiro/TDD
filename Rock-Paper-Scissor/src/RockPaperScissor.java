@@ -1,7 +1,16 @@
+import java.util.HashMap;
+
 
 public class RockPaperScissor {
 
 	private String[] validStrategy = {"P", "S", "R"};
+	private HashMap<String, String>possibleWins = new HashMap<String,String>();
+	
+	public RockPaperScissor(){
+		this.possibleWins.put("P", "S");
+		this.possibleWins.put("R", "P");
+		this.possibleWins.put("S", "R");
+	}
 	
 	private boolean playersStrategyValid(String strategyPlayer1, String strategyPlayer2){
 		boolean okPlayer1=false, okPlayer2 = false;
@@ -20,12 +29,10 @@ public class RockPaperScissor {
 		if(!this.playersStrategyValid(player1[1], player2[1]))
 			throw new NoSuchStrategyError();
 		
-		String[] result = {"Dave", "S"};
-		
-		
-		
-		
-		return result;
+		if(player1[1] == this.possibleWins.get(player2[1]))
+			return player1;
+		else
+			return player2;
 	}
 
 }
