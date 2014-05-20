@@ -1,8 +1,8 @@
-
 public class URL {
 
-	public URL(String string) {
-		// TODO Auto-generated constructor stub
+	public URL(String urlText) {
+		if(urlText.equals(""))
+			throw new IllegalArgumentException();
 	}
 
 }
