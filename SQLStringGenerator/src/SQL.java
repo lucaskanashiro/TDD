@@ -70,8 +70,16 @@ public class SQL {
 	public String delete(String table, String[] select) {
 		String command_sql = "delete from ";
 		
-		command_sql += table + " where " + select[0] + "='" + select[1] + "'";
+		command_sql += table + " where ";
 		
+		if(select.length == 2)
+			command_sql += select[0] + "='" + select[1] + "'";
+		else{
+			for(int i=0; i<select.length-3; i+=2)
+				command_sql += select[i] + "='" + select[i+1] + "' and ";
+			command_sql += select[select.length-2] + "='" + select[select.length-1] + "'";
+		}
+				
 		return command_sql;
 	}
 

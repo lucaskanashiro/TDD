@@ -71,7 +71,7 @@ public class TestSQL {
 	}
 	
 	@Test
-	public void testDeleteWithMoreColumns(){
+	public void testDeleteWithMoreArgumments(){
 		String[] select = {"name", "cat", "age", "10"};
 		
 		assertEquals("delete from animal where name='cat' and age='10'",
