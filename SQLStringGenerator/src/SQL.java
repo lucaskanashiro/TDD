@@ -5,7 +5,6 @@ public class SQL {
 		String command_sql = "select ";
 		
 		command_sql += this.printValuesInArray(column);
-		
 		command_sql += " from " + table;
 		
 		return command_sql;
@@ -15,13 +14,9 @@ public class SQL {
 		String command_sql = "insert into ";
 		
 		command_sql += table + " (";
-
 		command_sql += this.printValuesInArray(column);
-		
 		command_sql += ") values (";
-		
 		command_sql += this.printValuesInArray(value);
-		
 		command_sql += ")";
 		
 		return command_sql;
@@ -54,15 +49,8 @@ public class SQL {
 			command_sql += column[column.length-1] + "='" + value[value.length-1];
 		}
 				
-		command_sql += "' where ";
-		
-		if(select.length == 2)
-			command_sql += select[0] + "='" + select[1] + "'";
-		else{
-			for(int i=0; i<select.length-3; i+=2)
-				command_sql += select[i] + "='" + select[i+1] + "' and ";
-			command_sql += select[select.length-2] + "='" + select[select.length-1] + "'";
-		}
+		command_sql += "' where ";	
+		command_sql += this.printValuesOfSelection(select);
 		
 		return command_sql;
 	}
@@ -71,16 +59,22 @@ public class SQL {
 		String command_sql = "delete from ";
 		
 		command_sql += table + " where ";
-		
-		if(select.length == 2)
-			command_sql += select[0] + "='" + select[1] + "'";
-		else{
-			for(int i=0; i<select.length-3; i+=2)
-				command_sql += select[i] + "='" + select[i+1] + "' and ";
-			command_sql += select[select.length-2] + "='" + select[select.length-1] + "'";
-		}
+		command_sql += this.printValuesOfSelection(select);
 				
 		return command_sql;
 	}
 
+	private String printValuesOfSelection(String[] select){
+		String result = "";
+		
+		if(select.length == 2)
+			result += select[0] + "='" + select[1] + "'";
+		else{
+			for(int i=0; i<select.length-3; i+=2)
+				result += select[i] + "='" + select[i+1] + "' and ";
+			result += select[select.length-2] + "='" + select[select.length-1] + "'";
+		}
+		
+		return result;
+	}
 }
