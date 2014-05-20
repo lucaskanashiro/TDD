@@ -6,8 +6,11 @@ import org.junit.Test;
 public class TestSQL {
 
 	@Test
-	public void test() {
-		fail("Not yet implemented");
+	public void testSimpleSelect(){
+		SQL sql = new SQL();
+		
+		String[] column = {"name"};
+		assertEquals("select name from animal", sql.select("animal", column));
 	}
 
 }
