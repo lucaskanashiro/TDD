@@ -25,8 +25,15 @@ public class TestURL {
 	}
 	
 	@Test
-	public void testgetDomain(){
+	public void testgetDomainWithoutPath(){
 		this.url = new URL("http://www.google.com");
+		
+		assertEquals("www.google.com", this.url.getDomain());
+	}
+	
+	@Test
+	public void testgetDomainWithPath(){
+		this.url = new URL("http://www.google.com/TDD");
 		
 		assertEquals("www.google.com", this.url.getDomain());
 	}
