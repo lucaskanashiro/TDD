@@ -46,8 +46,9 @@ public class TestSQL {
 	public void testSimpleUpdate(){
 		String[] column = {"name"};
 		String[] value = {"dog"};
+		String[] select = {"name", "cat"};
 		
 		assertEquals("update animal set name='dog' where name='cat'",
-				this.sql.update("animal", column, value, "name", "cat"));
+				this.sql.update("animal", column, value, select));
 	}
 }

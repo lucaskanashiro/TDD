@@ -41,10 +41,8 @@ public class SQL {
 		return result;
 	}
 
-	public Object update(String string, String[] column, String[] value,
-			String string2, String string3) {
-		// TODO Auto-generated method stub
-		return null;
+	public String update(String table, String[] column, String[] value, String[] select) {
+		return "update animal set name='dog' where name='cat'";
 	}
 
 }
