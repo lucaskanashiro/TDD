@@ -41,4 +41,13 @@ public class TestSQL {
 		assertEquals("insert into animal (name,age,phylum) values (dog,10,mammalia)", 
 				this.sql.insert("animal", column, value));
 	}
+	
+	@Test
+	public void testSimpleUpdate(){
+		String[] column = {"name"};
+		String[] value = {"dog"};
+		
+		assertEquals("update animal set name='dog' where name='cat'",
+				this.sql.update("animal", column, value, "name", "cat"));
+	}
 }

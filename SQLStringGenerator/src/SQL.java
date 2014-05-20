@@ -41,4 +41,10 @@ public class SQL {
 		return result;
 	}
 
+	public Object update(String string, String[] column, String[] value,
+			String string2, String string3) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
