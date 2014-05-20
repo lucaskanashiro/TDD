@@ -5,15 +5,16 @@ import org.junit.Test;
 
 public class TestURL {
 
+	private URL url;
+	
 	@Test(expected=IllegalArgumentException.class)
 	public void testCreateURLWithBlankedURL() {
-		@SuppressWarnings("unused")
-		URL url = new URL("");
+		this.url = new URL("");
 	}
 
 	@Test(expected=IllegalArgumentException.class)
 	public void testCreateURLWithInvalidParameter(){
-		@SuppressWarnings("unused")
-		URL url = new URL("non valid string");
+		this.url = new URL("non valid string");
 	}
+	
 }
