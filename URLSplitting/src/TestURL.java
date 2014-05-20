@@ -44,4 +44,11 @@ public class TestURL {
 		
 		this.url.getPath();
 	}
+	
+	@Test
+	public void testgetPathWithPathInURL(){
+		this.url = new URL("http://www.google.com/TDD");
+		
+		assertEquals("TDD", this.url.getDomain());
+	}
 }
