@@ -32,4 +32,13 @@ public class TestSQL {
 		
 		assertEquals("insert into animal (name) values (dog)", this.sql.insert("animal", column, value));
 	}
+	
+	@Test
+	public void testInsertWithMoreColumns(){
+		String[] column = {"name", "age", "phylum"};
+		String[] value = {"dog", "10", "mammalia"};
+		
+		assertEquals("insert into animal (name,age,phylum) values (dog,10,mammalia)", 
+				this.sql.insert("animal", column, value));
+	}
 }
