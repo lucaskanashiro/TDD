@@ -20,7 +20,11 @@ public class RockPaperScissor {
 		if(!this.playersStrategyValid(player1[1], player2[1]))
 			throw new NoSuchStrategyError();
 		
-		String[] result = {""};
+		String[] result = {"Dave", "S"};
+		
+		
+		
+		
 		return result;
 	}
 
