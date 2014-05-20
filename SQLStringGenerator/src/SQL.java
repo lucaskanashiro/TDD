@@ -68,7 +68,11 @@ public class SQL {
 	}
 
 	public String delete(String table, String[] select) {
-		return "delete from animal where name='cat'";
+		String command_sql = "delete from ";
+		
+		command_sql += table + " where " + select[0] + "='" + select[1] + "'";
+		
+		return command_sql;
 	}
 
 }
