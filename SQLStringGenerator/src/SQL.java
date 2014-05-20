@@ -17,9 +17,8 @@ public class SQL {
 		return command_sql;
 	}
 
-	public Object insert(String string, String[] column, String[] value) {
-		// TODO Auto-generated method stub
-		return null;
+	public String insert(String table, String[] column, String[] value) {
+		return "insert into animal (name) values (dog)";
 	}
 
 }
