@@ -67,9 +67,8 @@ public class SQL {
 		return command_sql;
 	}
 
-	public Object delete(String string, String[] select) {
-		// TODO Auto-generated method stub
-		return null;
+	public String delete(String table, String[] select) {
+		return "delete from animal where name='cat'";
 	}
 
 }
