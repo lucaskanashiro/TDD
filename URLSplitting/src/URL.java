@@ -39,7 +39,7 @@ public class URL {
 		return domain;
 	}
 
-	public String getPath() throws PathNullException {
+	private int countBarInURL(){
 		int countBar=0;
 		
 		for(int i=0; i<this.urlText.length(); i++){
@@ -47,7 +47,11 @@ public class URL {
 				countBar++;
 		}
 		
-		if(countBar < 3)
+		return countBar;
+	}
+	
+	public String getPath() throws PathNullException {
+		if(this.countBarInURL() < 3)
 			throw new PathNullException();
 		
 		return "";
