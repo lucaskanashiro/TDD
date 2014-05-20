@@ -37,4 +37,11 @@ public class TestURL {
 		
 		assertEquals("www.google.com", this.url.getDomain());
 	}
+	
+	@Test(expected=PathNullException.class)
+	public void testgetPathWithoutPathInURL(){
+		this.url = new URL("http://www.google.com");
+		
+		this.url.getPath();
+	}
 }

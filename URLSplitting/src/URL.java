@@ -39,4 +39,9 @@ public class URL {
 		return domain;
 	}
 
+	public void getPath() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }
