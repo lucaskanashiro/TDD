@@ -39,7 +39,7 @@ public class TestURL {
 	}
 	
 	@Test(expected=PathNullException.class)
-	public void testgetPathWithoutPathInURL(){
+	public void testgetPathWithoutPathInURL() throws PathNullException{
 		this.url = new URL("http://www.google.com");
 		
 		this.url.getPath();

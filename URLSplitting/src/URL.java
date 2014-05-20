@@ -39,9 +39,18 @@ public class URL {
 		return domain;
 	}
 
-	public void getPath() {
-		// TODO Auto-generated method stub
+	public String getPath() throws PathNullException {
+		int countBar=0;
 		
+		for(int i=0; i<this.urlText.length(); i++){
+			if(this.urlText.charAt(i) == '/')
+				countBar++;
+		}
+		
+		if(countBar < 3)
+			throw new PathNullException();
+		
+		return "";
 	}
 
 }
