@@ -5,4 +5,9 @@ public class URL {
 			throw new IllegalArgumentException();
 	}
 
+	public Object getProtocol() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

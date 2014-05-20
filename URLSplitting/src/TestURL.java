@@ -17,4 +17,10 @@ public class TestURL {
 		this.url = new URL("non valid string");
 	}
 	
+	@Test
+	public void testGetProtocol(){
+		this.url = new URL("https://www.google.com");
+		
+		assertEquals("https", this.url.getProtocol());
+	}
 }
