@@ -22,13 +22,27 @@ public class SQL {
 		
 		command_sql += table + " (";
 		
-		command_sql += column[0];
+		if(column.length == 1)
+			command_sql += column[0];
+		else{
+			for(int i=0; i<column.length-1; i++)
+				command_sql += column[i] + ",";
+			command_sql += column[column.length-1];
+		}
 		
 		command_sql += ") values (";
 		
-		command_sql += value[0] + ")";
+		if(value.length == 1)
+			command_sql += value[0];
+		else{
+			for(int i=0; i<value.length-1; i++)
+				command_sql += value[i] + ",";
+			command_sql += value[value.length-1];
+		}
 		
-		return "insert into animal (name) values (dog)";
+		command_sql += ")";
+		
+		return command_sql;
 	}
 
 }
