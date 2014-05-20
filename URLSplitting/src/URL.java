@@ -25,7 +25,15 @@ public class URL {
 	}
 
 	public String getDomain() {
-		return "www.google.com";
+		String domain="";
+		
+		int index = this.urlText.indexOf("://");
+		
+		for(int i=index+3; i<this.urlText.length(); i++){
+			domain += this.urlText.charAt(i);
+		}
+		
+		return domain;
 	}
 
 }
