@@ -13,4 +13,11 @@ public class TestSQL {
 		assertEquals("select name from animal", sql.select("animal", column));
 	}
 
+	@Test
+	public void testSelectWithMoreColumns(){
+		SQL sql = new SQL();
+		
+		String[] column = {"name", "age", "phylum"};
+		assertEquals("select name,age,phylum from animal", sql.select("animal", column));
+	}
 }
