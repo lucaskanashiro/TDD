@@ -20,5 +20,23 @@ public class TestGame {
 		assertEquals("Dave", p2[0]);
 		assertEquals("S", p2[1]);
 	}
+	
+	@Test
+	public void testCreateAndGetGameWithAnothersGame(){
+		String[] player1 = {"Armando", "P"};
+		String[] player2 = {"Dave", "S"};
+		
+		Game game1 = new Game(player1, player2);
+		
+		String[] player3 = {"Richard", "R"};
+		String[] player4 = {"Michael", "S"};
+		
+		Game game2 = new Game(player3, player4);
+		
+		Game finalGame = new Game(game1, game2);
+		
+		assertEquals(game1, finalGame.getGame1());
+		assertEquals(game2, finalGame.getGame2());
+	}
 
 }
