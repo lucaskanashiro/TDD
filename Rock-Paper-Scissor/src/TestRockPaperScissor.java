@@ -118,25 +118,25 @@ public class TestRockPaperScissor {
 		
 		String[][] game4 = {player7, player8};
 		
-		String[] player9 = {"Armando", "P"};
-		String[] player10 = {"Dave", "S"};
+		String[] player9 = {"Lua", "S"};
+		String[] player10 = {"Dani", "P"};
 		
-		String[][] game5 = {player1, player2};
+		String[][] game5 = {player9, player10};
 		
-		String[] player11 = {"Richard", "R"};
-		String[] player12 = {"Michael", "S"};
+		String[] player11 = {"Sol", "S"};
+		String[] player12 = {"Sergio", "R"};
 		
-		String[][] game6 = {player3, player4};
+		String[][] game6 = {player11, player12};
 		
-		String[] player13 = {"Allen", "S"};
-		String[] player14 = {"Omer", "P"};
+		String[] player13 = {"Alice", "P"};
+		String[] player14 = {"Homer", "S"};
 		
-		String[][] game7 = {player5, player6};
+		String[][] game7 = {player13, player14};
 		
-		String[] player15 = {"David R.", "R"};
-		String[] player16 = {"Richard X.", "P"};
+		String[] player15 = {"Ronaldo", "P"};
+		String[] player16 = {"Ricardo", "S"};
 		
-		String[][] game8 = {player7, player8};
+		String[][] game8 = {player15, player16};
 		
 		ArrayList<String[][]>tournament = new ArrayList<String[][]>();
 		
@@ -144,6 +144,10 @@ public class TestRockPaperScissor {
 		tournament.add(game2);
 		tournament.add(game3);
 		tournament.add(game4);
+		tournament.add(game5);
+		tournament.add(game6);
+		tournament.add(game7);
+		tournament.add(game8);
 		
 		String[] winner = game.tournament_winner(tournament);
 		
