@@ -4,7 +4,7 @@ import org.junit.runners.Suite.SuiteClasses;
 
 
 @RunWith(Suite.class)
-@SuiteClasses({ TestRockPaperScissor.class, TestGame.class })
+@SuiteClasses({ TestRockPaperScissor.class, TestGameObject.class })
 public class TestSuite {
 
 }

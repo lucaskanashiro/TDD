@@ -1,7 +1,5 @@
 import static org.junit.Assert.*;
 
-import java.util.ArrayList;
-
 import org.junit.Test;
 
 
@@ -14,7 +12,10 @@ public class TestRockPaperScissor {
 		String[] player1 = {"Armando", "p"};
 		String[] player2 = {"Dave", "b"};
 		
-		game.winner(player1, player2);
+		GameObject gameOne = new GameObject(player1);
+		GameObject gameTwo = new GameObject(player2);
+		
+		game.winner(gameOne, gameTwo);
 	}
 
 	@Test
@@ -24,10 +25,29 @@ public class TestRockPaperScissor {
 		String[] player1 = {"Armando", "P"};
 		String[] player2 = {"Dave", "S"};
 		
-		String[] winner = game.winner(player1, player2);
+		GameObject gameOne = new GameObject(player1);
+		GameObject gameTwo = new GameObject(player2);
 		
-		assertEquals("Dave", winner[0]);
-		assertEquals("S", winner[1]);
+		GameObject winner = game.winner(gameOne, gameTwo);
+		
+		assertEquals("Dave", winner.getPlayer()[0]);
+		assertEquals("S", winner.getPlayer()[1]);
+	}
+	
+	@Test
+	public void testWinnerOfOneGameWithSameStrategy() throws NoSuchStrategyError{
+		RockPaperScissor game = new RockPaperScissor();
+		
+		String[] player1 = {"Armando", "P"};
+		String[] player2 = {"Dave", "P"};
+		
+		GameObject gameOne = new GameObject(player1);
+		GameObject gameTwo = new GameObject(player2);
+		
+		GameObject winner = game.winner(gameOne, gameTwo);
+		
+		assertEquals("Armando", winner.getPlayer()[0]);
+		assertEquals("P", winner.getPlayer()[1]);
 	}
 	
 	@Test
@@ -37,24 +57,23 @@ public class TestRockPaperScissor {
 		String[] player1 = {"Armando", "P"};
 		String[] player2 = {"Dave", "S"};
 		
-		String[][] game1 = {player1, player2};
+		GameObject gameOne = new GameObject(player1);
+		GameObject gameTwo = new GameObject(player2);
+		
+		GameObject game1 = new GameObject(gameOne, gameTwo);
 		
 		String[] player3 = {"Richard", "R"};
 		String[] player4 = {"Michael", "S"};
 		
-		String[][] game2 = {player3, player4};
+		GameObject gameThree = new GameObject(player3);
+		GameObject gameFour = new GameObject(player4);
 		
-		//String[][][] tournament = {game1, game2};
+		GameObject game2 = new GameObject(gameThree, gameFour);
 		
-		ArrayList<String[][]>tournament = new ArrayList<String[][]>();
+		GameObject winner = game.tournament_winner(game1, game2);
 		
-		tournament.add(game1);
-		tournament.add(game2);
-		
-		String[] winner = game.tournament_winner(tournament);
-		
-		assertEquals("Richard", winner[0]);
-		assertEquals("R", winner[1]);
+		assertEquals("Richard", winner.getPlayer()[0]);
+		assertEquals("R", winner.getPlayer()[1]);
 	}
 	
 	@Test
@@ -64,34 +83,42 @@ public class TestRockPaperScissor {
 		String[] player1 = {"Armando", "P"};
 		String[] player2 = {"Dave", "S"};
 		
-		String[][] game1 = {player1, player2};
+		GameObject gameOne = new GameObject(player1);
+		GameObject gameTwo = new GameObject(player2);
+		
+		GameObject game1 = new GameObject(gameOne, gameTwo);
 		
 		String[] player3 = {"Richard", "R"};
 		String[] player4 = {"Michael", "S"};
 		
-		String[][] game2 = {player3, player4};
+		GameObject gameThree = new GameObject(player3);
+		GameObject gameFour = new GameObject(player4);
 		
+		GameObject game2 = new GameObject(gameThree, gameFour);
+			
 		String[] player5 = {"Allen", "S"};
 		String[] player6= {"Omer", "P"};
 		
-		String[][] game3 = {player5, player6};
+		GameObject gameFive = new GameObject(player5);
+		GameObject gameSix = new GameObject(player6);
+		
+		GameObject game3 = new GameObject(gameFive, gameSix);
 		
 		String[] player7 = {"David R.", "R"};
 		String[] player8 = {"Richard X.", "P"};
 		
-		String[][] game4 = {player7, player8};
+		GameObject gameSeven = new GameObject(player7);
+		GameObject gameEight = new GameObject(player8);
 		
-		ArrayList<String[][]>tournament = new ArrayList<String[][]>();
+		GameObject game4 = new GameObject(gameSeven, gameEight);
 		
-		tournament.add(game1);
-		tournament.add(game2);
-		tournament.add(game3);
-		tournament.add(game4);
+		GameObject semiFinal1 = new GameObject(game1, game2);
+		GameObject semiFinal2 = new GameObject(game3, game4); 
 		
-		String[] winner = game.tournament_winner(tournament);
+		GameObject winner = game.tournament_winner(semiFinal1, semiFinal2);
 		
-		assertEquals("Richard", winner[0]);
-		assertEquals("R", winner[1]);
+		assertEquals("Richard", winner.getPlayer()[0]);
+		assertEquals("R", winner.getPlayer()[1]);
 	}
 	
 	@Test
@@ -101,57 +128,78 @@ public class TestRockPaperScissor {
 		String[] player1 = {"Armando", "P"};
 		String[] player2 = {"Dave", "S"};
 		
-		String[][] game1 = {player1, player2};
+		GameObject gameOne = new GameObject(player1);
+		GameObject gameTwo = new GameObject(player2);
+		
+		GameObject game1 = new GameObject(gameOne, gameTwo);
 		
 		String[] player3 = {"Richard", "R"};
 		String[] player4 = {"Michael", "S"};
 		
-		String[][] game2 = {player3, player4};
+		GameObject gameThree = new GameObject(player3);
+		GameObject gameFour = new GameObject(player4);
 		
+		GameObject game2 = new GameObject(gameThree, gameFour);
+			
 		String[] player5 = {"Allen", "S"};
 		String[] player6= {"Omer", "P"};
 		
-		String[][] game3 = {player5, player6};
+		GameObject gameFive = new GameObject(player5);
+		GameObject gameSix = new GameObject(player6);
+		
+		GameObject game3 = new GameObject(gameFive, gameSix);
 		
 		String[] player7 = {"David R.", "R"};
 		String[] player8 = {"Richard X.", "P"};
 		
-		String[][] game4 = {player7, player8};
+		GameObject gameSeven = new GameObject(player7);
+		GameObject gameEight = new GameObject(player8);
+		
+		GameObject game4 = new GameObject(gameSeven, gameEight);
 		
 		String[] player9 = {"Lua", "S"};
 		String[] player10 = {"Dani", "P"};
 		
-		String[][] game5 = {player9, player10};
+		GameObject gameNine = new GameObject(player9);
+		GameObject gameTen = new GameObject(player10);
+		
+		GameObject game5 = new GameObject(gameNine, gameTen);
 		
 		String[] player11 = {"Sol", "S"};
 		String[] player12 = {"Sergio", "R"};
 		
-		String[][] game6 = {player11, player12};
+		GameObject gameEleven = new GameObject(player11);
+		GameObject gameTwelve = new GameObject(player12);
+		
+		GameObject game6 = new GameObject(gameEleven, gameTwelve);
 		
 		String[] player13 = {"Alice", "P"};
 		String[] player14 = {"Homer", "S"};
 		
-		String[][] game7 = {player13, player14};
+		GameObject gameThirteen = new GameObject(player13);
+		GameObject gameFourteen = new GameObject(player14);
+		
+		GameObject game7 = new GameObject(gameThirteen, gameFourteen);
 		
 		String[] player15 = {"Ronaldo", "P"};
 		String[] player16 = {"Ricardo", "S"};
 		
-		String[][] game8 = {player15, player16};
+		GameObject gameFifteen = new GameObject(player15);
+		GameObject gameSixteen = new GameObject(player16);
 		
-		ArrayList<String[][]>tournament = new ArrayList<String[][]>();
+		GameObject game8 = new GameObject(gameFifteen, gameSixteen);
 		
-		tournament.add(game1);
-		tournament.add(game2);
-		tournament.add(game3);
-		tournament.add(game4);
-		tournament.add(game5);
-		tournament.add(game6);
-		tournament.add(game7);
-		tournament.add(game8);
+		GameObject quarterFinal1 = new GameObject(game1, game2);
+		GameObject quarterFinal2 = new GameObject(game3, game4);
+		GameObject quarterFinal3 = new GameObject(game5, game6);
+		GameObject quarterFinal4 = new GameObject(game7, game8);
 		
-		String[] winner = game.tournament_winner(tournament);
+		GameObject semiFinal1 = new GameObject(quarterFinal1, quarterFinal2);
+		GameObject semiFinal2 = new GameObject(quarterFinal3, quarterFinal4);
 		
-		assertEquals("Richard", winner[0]);
-		assertEquals("R", winner[1]);
+		GameObject winner = game.tournament_winner(semiFinal1, semiFinal2);
+		
+		assertEquals("Richard", winner.getPlayer()[0]);
+		assertEquals("R", winner.getPlayer()[1]);
 	}
 }

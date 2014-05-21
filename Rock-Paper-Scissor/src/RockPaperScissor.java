@@ -1,4 +1,3 @@
-import java.util.ArrayList;
 import java.util.HashMap;
 
 
@@ -26,38 +25,25 @@ public class RockPaperScissor {
 		return okPlayer1 && okPlayer2;
 	}
 	
-	public String[] winner(String[] player1, String[] player2) throws NoSuchStrategyError {
-		if(!this.playersStrategyValid(player1[1], player2[1]))
+	public GameObject winner(GameObject game1, GameObject game2) throws NoSuchStrategyError {
+		if(!this.playersStrategyValid(game1.getPlayer()[1], game2.getPlayer()[1]))
 			throw new NoSuchStrategyError();
 		
-		if(player1[1] == this.possibleWins.get(player2[1]))
-			return player1;
+		if(game1.getPlayer()[1] == this.possibleWins.get(game2.getPlayer()[1]))
+			return game1;
+		else if(game1.getPlayer()[1] == game2.getPlayer()[1])
+			return game1;
 		else
-			return player2;
+			return game2;
 	}
 
-	public String[] tournament_winner(ArrayList<String[][]> tournament) throws NoSuchStrategyError {	
-		ArrayList<String[]> partialWinner1 = new ArrayList<String[]>();
-		ArrayList<String[]> partialWinner2 = new ArrayList<String[]>();
+	public GameObject tournament_winner(GameObject tournament1, GameObject tournament2) throws NoSuchStrategyError {	
 		
-		if(tournament.size() == 2){
-			
-			for(String[][] game : tournament)
-				partialWinner1.add(this.winner(game[0], game[1]));
-			
-			return this.winner(partialWinner1.get(0), partialWinner1.get(1));
-			
-		}else{
-			
-			for(String[][] game : tournament)
-				partialWinner1.add(this.winner(game[0], game[1]));
-			
-			for (int i = 0; i < partialWinner1.size()-2; i++)
-			    partialWinner2.add(this.winner(partialWinner1.get(i), partialWinner1.get(i+1)));
-			
-			return this.winner(partialWinner2.get(0), partialWinner2.get(1));
-		}
+		if(tournament1.getPlayer() != null)
+			return this.winner(tournament1, tournament2);
 		
+		return this.tournament_winner(this.tournament_winner(tournament1.getGame1(), tournament1.getGame2()), 
+				this.tournament_winner(tournament2.getGame1(), tournament2.getGame2()));
 	}
 
 }
