@@ -81,7 +81,62 @@ public class TestRockPaperScissor {
 		
 		String[][] game4 = {player7, player8};
 		
-		//String[][][] tournament = {game1, game2};
+		ArrayList<String[][]>tournament = new ArrayList<String[][]>();
+		
+		tournament.add(game1);
+		tournament.add(game2);
+		tournament.add(game3);
+		tournament.add(game4);
+		
+		String[] winner = game.tournament_winner(tournament);
+		
+		assertEquals("Richard", winner[0]);
+		assertEquals("R", winner[1]);
+	}
+	
+	@Test
+	public void testTournamentWith16players() throws NoSuchStrategyError{
+		RockPaperScissor game = new RockPaperScissor();
+		
+		String[] player1 = {"Armando", "P"};
+		String[] player2 = {"Dave", "S"};
+		
+		String[][] game1 = {player1, player2};
+		
+		String[] player3 = {"Richard", "R"};
+		String[] player4 = {"Michael", "S"};
+		
+		String[][] game2 = {player3, player4};
+		
+		String[] player5 = {"Allen", "S"};
+		String[] player6= {"Omer", "P"};
+		
+		String[][] game3 = {player5, player6};
+		
+		String[] player7 = {"David R.", "R"};
+		String[] player8 = {"Richard X.", "P"};
+		
+		String[][] game4 = {player7, player8};
+		
+		String[] player9 = {"Armando", "P"};
+		String[] player10 = {"Dave", "S"};
+		
+		String[][] game5 = {player1, player2};
+		
+		String[] player11 = {"Richard", "R"};
+		String[] player12 = {"Michael", "S"};
+		
+		String[][] game6 = {player3, player4};
+		
+		String[] player13 = {"Allen", "S"};
+		String[] player14 = {"Omer", "P"};
+		
+		String[][] game7 = {player5, player6};
+		
+		String[] player15 = {"David R.", "R"};
+		String[] player16 = {"Richard X.", "P"};
+		
+		String[][] game8 = {player7, player8};
 		
 		ArrayList<String[][]>tournament = new ArrayList<String[][]>();
 		
@@ -94,7 +149,5 @@ public class TestRockPaperScissor {
 		
 		assertEquals("Richard", winner[0]);
 		assertEquals("R", winner[1]);
-		
-		
 	}
 }

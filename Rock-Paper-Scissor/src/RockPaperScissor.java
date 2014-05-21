@@ -36,17 +36,27 @@ public class RockPaperScissor {
 			return player2;
 	}
 
-	public String[] tournament_winner(ArrayList<String[][]> tournament) throws NoSuchStrategyError {
-		//String[] partialWinnerGame1 = null, partialWinnerGame2;
+	public String[] tournament_winner(ArrayList<String[][]> tournament) throws NoSuchStrategyError {	
+		ArrayList<String[]> partialWinner1 = new ArrayList<String[]>();
+		ArrayList<String[]> partialWinner2 = new ArrayList<String[]>();
 		
-		ArrayList<String[]> partialWinner = new ArrayList<String[]>();
-		
-		for(String[][] game : tournament){
+		if(tournament.size() == 2){
 			
+			for(String[][] game : tournament)
+				partialWinner1.add(this.winner(game[0], game[1]));
+			
+			return this.winner(partialWinner1.get(0), partialWinner1.get(1));
+			
+		}else{
+			
+			for(String[][] game : tournament)
+				partialWinner1.add(this.winner(game[0], game[1]));
+			
+			for (int i = 0; i < partialWinner1.size()-2; i++)
+			    partialWinner2.add(this.winner(partialWinner1.get(i), partialWinner1.get(i+1)));
+			
+			return this.winner(partialWinner2.get(0), partialWinner2.get(1));
 		}
-		
-		return partialWinnerGame1;
-		
 		
 	}
 
