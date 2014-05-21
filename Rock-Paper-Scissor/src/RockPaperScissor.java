@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.HashMap;
 
 
@@ -35,13 +36,18 @@ public class RockPaperScissor {
 			return player2;
 	}
 
-	public String[] tournament_winner(String[][][] tournament) throws NoSuchStrategyError {
-		String[] partialWinnerGame1, partialWinnerGame2;
+	public String[] tournament_winner(ArrayList<String[][]> tournament) throws NoSuchStrategyError {
+		//String[] partialWinnerGame1 = null, partialWinnerGame2;
 		
-		partialWinnerGame1 = this.winner(tournament[0][0], tournament[0][1]);
-		partialWinnerGame2 = this.winner(tournament[1][0], tournament[1][1]);
+		ArrayList<String[]> partialWinner = new ArrayList<String[]>();
+		
+		for(String[][] game : tournament){
 			
-		return this.winner(partialWinnerGame1, partialWinnerGame2);
+		}
+		
+		return partialWinnerGame1;
+		
+		
 	}
 
 }

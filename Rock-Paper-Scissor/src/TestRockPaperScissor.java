@@ -1,5 +1,7 @@
 import static org.junit.Assert.*;
 
+import java.util.ArrayList;
+
 import org.junit.Test;
 
 
@@ -42,7 +44,12 @@ public class TestRockPaperScissor {
 		
 		String[][] game2 = {player3, player4};
 		
-		String[][][] tournament = {game1, game2};
+		//String[][][] tournament = {game1, game2};
+		
+		ArrayList<String[][]>tournament = new ArrayList<String[][]>();
+		
+		tournament.add(game1);
+		tournament.add(game2);
 		
 		String[] winner = game.tournament_winner(tournament);
 		
@@ -64,11 +71,30 @@ public class TestRockPaperScissor {
 		
 		String[][] game2 = {player3, player4};
 		
-		String[][][] tournament = {game1, game2};
+		String[] player5 = {"Allen", "S"};
+		String[] player6= {"Omer", "P"};
+		
+		String[][] game3 = {player5, player6};
+		
+		String[] player7 = {"David R.", "R"};
+		String[] player8 = {"Richard X.", "P"};
+		
+		String[][] game4 = {player7, player8};
+		
+		//String[][][] tournament = {game1, game2};
+		
+		ArrayList<String[][]>tournament = new ArrayList<String[][]>();
+		
+		tournament.add(game1);
+		tournament.add(game2);
+		tournament.add(game3);
+		tournament.add(game4);
 		
 		String[] winner = game.tournament_winner(tournament);
 		
 		assertEquals("Richard", winner[0]);
 		assertEquals("R", winner[1]);
+		
+		
 	}
 }
