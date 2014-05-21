@@ -35,4 +35,13 @@ public class RockPaperScissor {
 			return player2;
 	}
 
+	public String[] tournament_winner(String[][][] tournament) throws NoSuchStrategyError {
+		String[] partialWinnerGame1, partialWinnerGame2;
+		
+		partialWinnerGame1 = this.winner(tournament[0][0], tournament[0][1]);
+		partialWinnerGame2 = this.winner(tournament[1][0], tournament[1][1]);
+			
+		return this.winner(partialWinnerGame1, partialWinnerGame2);
+	}
+
 }
