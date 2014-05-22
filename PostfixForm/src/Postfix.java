@@ -11,11 +11,17 @@ public class Postfix {
 	}
 
 	public String convertInfix() {
-		String convertExpression="1 2 3 4 5";
+		String convertExpression="";
 		
-		/*for(int index=0; index<this.expression.length(); index++){
-			
-		}*/
+		for(int index=0; index<this.expression.length(); index++){
+			if(isDigit(this.expression.charAt(index))){
+				convertExpression += this.expression.charAt(index);
+				
+				if(index< this.expression.length()-1)
+					convertExpression += " ";
+					
+			}						
+		}
 		
 		return convertExpression;
 	}
