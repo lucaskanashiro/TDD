@@ -42,4 +42,13 @@ public class TestProgram {
 		
 		assertEquals("TDD.txt DAS.txt", this.prog.getRecentFileList());
 	}
+	
+	@Test
+	public void testReturnOfRecentFileListWithSameFilesOpened() throws RecentFileNullException{
+		this.prog.openFile("TDD.txt");
+		this.prog.openFile("DAS.txt");
+		this.prog.openFile("DAS.txt");
+		
+		assertEquals("DAS.txt TDD.txt", this.prog.getRecentFileList());
+	}
 }
