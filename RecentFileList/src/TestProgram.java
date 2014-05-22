@@ -51,4 +51,28 @@ public class TestProgram {
 		
 		assertEquals("DAS.txt TDD.txt", this.prog.getRecentFileList());
 	}
+	
+	@Test
+	public void testReturnOfRecentFileListWithMaximumFilesOpenend() throws RecentFileNullException{
+		this.prog.openFile("TDD.txt");
+		this.prog.openFile("DAS.txt");
+		this.prog.openFile("A.txt");
+		this.prog.openFile("B.txt");
+		this.prog.openFile("C.txt");
+		this.prog.openFile("D.txt");
+		this.prog.openFile("E.txt");
+		this.prog.openFile("F.txt");
+		this.prog.openFile("G.txt");
+		this.prog.openFile("H.txt");
+		this.prog.openFile("I.txt");
+		this.prog.openFile("J.txt");
+		this.prog.openFile("K.txt");
+		this.prog.openFile("L.txt");
+		this.prog.openFile("M.txt");
+		
+		String shouldReturn = "TDD.txt DAS.txt A.txt B.txt C.txt D.txt E.txt F.txt " +
+				"G.txt H.txt I.txt J.txt K.txt L.txt M.txt";
+		
+		assertEquals(shouldReturn, this.prog.getRecentFileList());
+	}
 }
