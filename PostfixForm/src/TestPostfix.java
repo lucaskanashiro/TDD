@@ -7,11 +7,13 @@ public class TestPostfix {
 
 	@Test(expected=IllegalArgumentException.class)
 	public void testCreatePostfixWithNullArgument() throws IllegalArgumentException {
+		@SuppressWarnings("unused")
 		Postfix postfix = new Postfix(null);
 	}
 
 	@Test(expected=IllegalArgumentException.class)
 	public void testCreatePostfixWithBlankedString(){
+		@SuppressWarnings("unused")
 		Postfix postfix = new Postfix("");
 	}
 	
@@ -28,5 +30,30 @@ public class TestPostfix {
 		
 		assertTrue(postfix.isDigit('3'));
 		assertFalse(postfix.isDigit('a'));
+	}
+	
+	@Test
+	public void testIsOperator(){
+		Postfix postfix = new Postfix("+ - / *");
+		
+		assertTrue(postfix.isOperator('+'));
+		assertFalse(postfix.isOperator('3'));
+	}
+	
+	@Test
+	public void testExpressionWithOperatorOnly(){
+		Postfix postfix = new Postfix("+ - * /");
+		
+		assertEquals("+ - * /", postfix.convertInfix());
+	}
+	
+	@Test
+	public void testPrecedenceOfOperator(){
+		Postfix postfix = new Postfix("+ - * /");
+		
+		assertEquals('*', postfix.checkOperatorPrecedence('+','*'));
+		assertEquals('+', postfix.checkOperatorPrecedence('+','-'));
+		assertEquals('/', postfix.checkOperatorPrecedence('-','/'));
+		assertEquals('*', postfix.checkOperatorPrecedence('*','/'));
 	}
 }
