@@ -35,4 +35,9 @@ public class IntegerStack {
 		return this.stack.size()-1;
 	}
 
+	public Object count() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

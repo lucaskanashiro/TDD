@@ -70,4 +70,9 @@ public class TestIntegerStack {
 		assertEquals(2, this.stack.pop());
 		
 	}
+	
+	@Test
+	public void testCountElementsInStackWithoutElements(){
+		assertEquals(0, this.stack.count());
+	}
 }
