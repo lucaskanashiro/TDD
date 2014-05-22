@@ -89,6 +89,31 @@ public class TestRockPaperScissor {
 		assertEquals("R", winner.getPlayer()[1]);
 	}
 	
+	@Test
+	public void testTounamentWith32players() throws NoSuchStrategyError{
+		GameObject octaveFinal1 = this.createTournamentWith8Players()[0];
+		GameObject octaveFinal2 = this.createTournamentWith8Players()[1];
+		GameObject octaveFinal3 = this.createTournamentWith8Players()[0];
+		GameObject octaveFinal4 = this.createTournamentWith8Players()[1];
+		GameObject octaveFinal5 = this.createTournamentWith8Players()[0];
+		GameObject octaveFinal6 = this.createTournamentWith8Players()[1];
+		GameObject octaveFinal7 = this.createTournamentWith8Players()[0];
+		GameObject octaveFinal8 = this.createTournamentWith8Players()[1];
+		
+		GameObject quarterFinal1 = new GameObject(octaveFinal1, octaveFinal2);
+		GameObject quarterFinal2 = new GameObject(octaveFinal3, octaveFinal4);
+		GameObject quarterFinal3 = new GameObject(octaveFinal5, octaveFinal6);
+		GameObject quarterFinal4 = new GameObject(octaveFinal7, octaveFinal8);
+		
+		GameObject semiFinal1 = new GameObject(quarterFinal1, quarterFinal2);
+		GameObject semiFinal2 = new GameObject(quarterFinal3, quarterFinal4);
+		
+		GameObject winner = this.game.tournament_winner(semiFinal1, semiFinal2);
+		
+		assertEquals("Richard", winner.getPlayer()[0]);
+		assertEquals("R", winner.getPlayer()[1]);
+	}
+	
 	private GameObject[] createTournamentWith8Players(){
 		String[] player1 = {"Armando", "P"};
 		String[] player2 = {"Dave", "S"};
