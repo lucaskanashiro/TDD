@@ -1,56 +1,73 @@
 import static org.junit.Assert.*;
 
+import org.junit.Before;
 import org.junit.Test;
 
 
 public class TestIntegerStack {
 
+	private IntegerStack stack;
+	
+	@Before
+	public void setUp(){
+		this.stack = new IntegerStack();
+	}
+	
 	@Test(expected=ArrayIndexOutOfBoundsException.class)
 	public void testTopWithoutElements(){
-		IntegerStack stack = new IntegerStack();
-		
-		stack.top();
+		this.stack.top();
 	}
 	
 	@Test
 	public void testPushSingleValueAndTop() {
-		IntegerStack stack = new IntegerStack();
+		this.stack.push(1);
 		
-		stack.push(1);
-		
-		assertEquals(1, stack.top());
+		assertEquals(1, this.stack.top());
 	}
 
 	@Test
 	public void testPushMoreElementsAndTop(){
-		IntegerStack stack = new IntegerStack();
+		this.stack.push(1);
+		this.stack.push(2);
+		this.stack.push(3);
+		this.stack.push(4);
+		this.stack.push(5);
+		this.stack.push(6);
+		this.stack.push(7);
 		
-		stack.push(1);
-		stack.push(2);
-		stack.push(3);
-		stack.push(4);
-		stack.push(5);
-		stack.push(6);
-		stack.push(7);
-		
-		assertEquals(7, stack.top());
+		assertEquals(7, this.stack.top());
 	}
 	
 	@Test(expected=ArrayIndexOutOfBoundsException.class)
-	public void testPopWithoutElements(){
-		IntegerStack stack = new IntegerStack();
-		
-		stack.pop();
+	public void testPopWithoutElements(){	
+		this.stack.pop();
 	}
 	
 	@Test(expected=ArrayIndexOutOfBoundsException.class)
-	public void testPopInStackWithOnlyOneValueAndPopAgain(){
-		IntegerStack stack = new IntegerStack();
+	public void testPopInStackWithOnlyOneValueAndPopAgain(){	
+		this.stack.push(1);
 		
-		stack.push(1);
+		assertEquals(1, this.stack.pop());
 		
-		assertEquals(1, stack.pop());
+		this.stack.pop();
+	}
+	
+	@Test
+	public void testSeveralPopCallsInSequence(){	
+		this.stack.push(1);
+		this.stack.push(2);
+		this.stack.push(3);
+		this.stack.push(4);
+		this.stack.push(5);
+		this.stack.push(6);
+		this.stack.push(7);
 		
-		stack.pop();
+		assertEquals(7, this.stack.pop());
+		assertEquals(6, this.stack.pop());
+		assertEquals(5, this.stack.pop());
+		assertEquals(4, this.stack.pop());
+		assertEquals(3, this.stack.pop());
+		assertEquals(2, this.stack.pop());
+		
 	}
 }
