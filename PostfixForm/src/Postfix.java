@@ -17,8 +17,7 @@ public class Postfix {
 
 	public String convertInfix() {
 		String convertExpression="";
-		//Stack<Character> operator = new Stack<Character>();
-		ArrayList<Character> operator = new ArrayList<Character>(); 
+		Stack<Character> operator = new Stack<Character>(); 
 		
 		for(int index=0; index<this.expression.length(); index++){
 			if(isDigit(this.expression.charAt(index))){
@@ -26,8 +25,7 @@ public class Postfix {
 			}	
 			
 			if(isOperator(this.expression.charAt(index))){
-				operator.add(this.expression.charAt(index));
-				/*if(!operator.isEmpty()){
+				if(!operator.isEmpty()){
 					if(this.checkOperatorPrecedence(operator.firstElement()) < this.checkOperatorPrecedence(this.expression.charAt(index)))
 						operator.push(this.expression.charAt(index));
 					else{
@@ -41,24 +39,12 @@ public class Postfix {
 					}
 				}
 				else
-					operator.push(this.expression.charAt(index));*/
+					operator.push(this.expression.charAt(index));
 			}
 		}
 		
-		//while(!operator.isEmpty())
-			//convertExpression += operator.pop();
-		
-		int precedence=2;
-		
-		for(int i=0; i<2; i++){
-			for(int index=0; index<operator.size(); index++){
-				if(this.checkOperatorPrecedence(operator.get(index)) == precedence)
-					convertExpression += operator.get(index);
-			}
-			precedence--;
-		}
-		
-		
+		while(!operator.isEmpty())
+			convertExpression += operator.pop();	
 		
 		return convertExpression;
 	}
