@@ -13,7 +13,7 @@ public class TestIntegerStack {
 	}
 	
 	@Test
-	public void testPushSingleValue() {
+	public void testPushSingleValueAndTop() {
 		IntegerStack stack = new IntegerStack();
 		
 		stack.push(1);
@@ -21,4 +21,18 @@ public class TestIntegerStack {
 		assertEquals(1, stack.top());
 	}
 
+	@Test
+	public void testPushMoreElementsAndTop(){
+		IntegerStack stack = new IntegerStack();
+		
+		stack.push(1);
+		stack.push(2);
+		stack.push(3);
+		stack.push(4);
+		stack.push(5);
+		stack.push(6);
+		stack.push(7);
+		
+		assertEquals(7, stack.top());
+	}
 }
