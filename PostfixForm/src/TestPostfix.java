@@ -70,4 +70,18 @@ public class TestPostfix {
 		
 		assertEquals("123*+4-", postfix.convertInfix());
 	}
+	
+	@Test
+	public void testExpressionWithOnlyOneNumber(){
+		Postfix postfix = new Postfix("1");
+		
+		assertEquals("1", postfix.convertInfix());
+	}
+	
+	@Test
+	public void testExpressionWithOnlyOneOperator(){
+		Postfix postfix = new Postfix("+");
+		
+		assertEquals("+", postfix.convertInfix());
+	}
 }
