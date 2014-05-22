@@ -22,8 +22,12 @@ public class Program {
 		
 		String list="";
 		
-		for(String file : this.recentFileList)
-			list += file;
+		for(int index=0; index<this.recentFileList.size(); index++){
+			if(index == this.recentFileList.size()-1)
+				list += this.recentFileList.get(index);
+			else
+				list += this.recentFileList.get(index) + " ";
+		}
 		
 		return list;
 	}
