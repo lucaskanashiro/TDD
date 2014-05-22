@@ -102,4 +102,12 @@ public class TestRectangle {
 		
 		assertTrue(rec1.checkOverlapping(rec2));
 	}
+	
+	@Test
+	public void testCheckOverlappingWithOutsideOverlapping(){
+		Rectangle rec1 = new Rectangle(0.0, 0.0, 1.0, 1.0);
+		Rectangle rec2 = new Rectangle(-0.5, 0.5, 2.0, 1.5);
+		
+		assertTrue(rec1.checkOverlapping(rec2));
+	}
 }
