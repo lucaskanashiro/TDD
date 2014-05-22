@@ -25,19 +25,14 @@ public class Program {
 			}
 		}
 		
-		if(this.recentFileList.size() == 15 && !findEqual){
+		if(this.recentFileList.size() == 15 && !findEqual ){
 			this.recentFileList.remove(0);
 			this.recentFileList.add(fileName);
-		} else if(this.recentFileList.size() == 15 && findEqual){
+		} else if(findEqual){
 			this.recentFileList.remove(indexSameFile);
 			this.recentFileList.add(0, fileName);
-		} else{
-			if(findEqual){
-				this.recentFileList.remove(indexSameFile);
-				this.recentFileList.add(0, fileName);
-			} else
-				this.recentFileList.add(fileName);
-		}
+		} else
+			this.recentFileList.add(fileName);
 	}
 
 	public String getRecentFileList() throws RecentFileNullException {
