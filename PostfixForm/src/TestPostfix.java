@@ -51,10 +51,10 @@ public class TestPostfix {
 	public void testPrecedenceOfOperator(){
 		Postfix postfix = new Postfix("+ - * /");
 		
-		assertEquals('*', postfix.checkOperatorPrecedence('+','*'));
-		assertEquals('+', postfix.checkOperatorPrecedence('+','-'));
-		assertEquals('/', postfix.checkOperatorPrecedence('-','/'));
-		assertEquals('*', postfix.checkOperatorPrecedence('*','/'));
+		assertEquals(1, postfix.checkOperatorPrecedence('+'));
+		assertEquals(1, postfix.checkOperatorPrecedence('-'));
+		assertEquals(2, postfix.checkOperatorPrecedence('/'));
+		assertEquals(2, postfix.checkOperatorPrecedence('*'));
 	}
 	
 	@Test 

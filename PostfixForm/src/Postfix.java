@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Stack;
 
 
 public class Postfix {
@@ -15,7 +16,7 @@ public class Postfix {
 
 	public String convertInfix() {
 		String convertExpression="";
-		ArrayList<Character> operator = new ArrayList<Character>();
+		Stack<Character> operator = new Stack<Character>();
 		
 		for(int index=0; index<this.expression.length(); index++){
 			if(isDigit(this.expression.charAt(index))){
@@ -27,18 +28,27 @@ public class Postfix {
 			
 			if(isOperator(this.expression.charAt(index))){
 				//convertExpression += this.expression.charAt(index);
+				if(!operator.isEmpty()){
+					if(this.checkOperatorPrecedence(operator.firstElement()) < this.checkOperatorPrecedence(this.expression.charAt(index)))
+						operator.push(this.expression.charAt(index));
+					else{
+						while(this.checkOperatorPrecedence(operator.firstElement()) >= this.checkOperatorPrecedence(this.expression.charAt(index)))
+							convertExpression += operator.pop();
+						operator.push(this.expression.charAt(index));
+					}
+				}
 				
-				operator.add(this.expression.charAt(index));				
 				
 				//if(index< this.expression.length()-1)
 					//convertExpression += " ";
 			}
 		}
 		
-		for (int index = 0; index<operator.size()-1; index++){
-			convertExpression += this.checkOperatorPrecedence(operator.get(index), operator.get(index+1));
-				 
+		for(int index=0; index<operator.size(); index++){
+			convertExpression += operator.get(operator.size()-1);
+			operator.remove(operator.size()-1);
 		}
+		
 		return convertExpression;
 	}
 
@@ -66,7 +76,7 @@ public class Postfix {
 		return checkCharacter(character, valisOperators);
 	}
 
-	public char checkOperatorPrecedence(char operator1, char operator2) {
+	public int checkOperatorPrecedence(char operator) {
 		HashMap<Character, Integer> precedenceOperator = new HashMap<Character, Integer>();
 		
 		precedenceOperator.put('+', 1);
@@ -74,11 +84,7 @@ public class Postfix {
 		precedenceOperator.put('*', 2);
 		precedenceOperator.put('/', 2);
 		
-		if(precedenceOperator.get(operator1) == precedenceOperator.get(operator2) ||
-				precedenceOperator.get(operator1) > precedenceOperator.get(operator2))
-			return operator1;
-		else 
-			return operator2;
+		return precedenceOperator.get(operator);
 		
 	}
 
