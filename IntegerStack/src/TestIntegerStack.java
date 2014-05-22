@@ -75,4 +75,15 @@ public class TestIntegerStack {
 	public void testCountElementsInStackWithoutElements(){
 		assertEquals(0, this.stack.count());
 	}
+	
+	@Test
+	public void testcountElementsInStackWith5Elements(){
+		this.stack.push(1);
+		this.stack.push(2);
+		this.stack.push(3);
+		this.stack.push(4);
+		this.stack.push(5);
+		
+		assertEquals(5, this.stack.count());
+	}
 }
