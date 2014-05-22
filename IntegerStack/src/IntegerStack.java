@@ -17,21 +17,22 @@ public class IntegerStack {
 		if(this.stack.isEmpty())
 			throw new ArrayIndexOutOfBoundsException();
 		
-		int lastElement = this.stack.size()-1;
-		
-		return this.stack.get(lastElement);
+		return this.stack.get(this.getIndexOfLastElement());
 	}
 
 	public int pop() {
 		if(this.stack.isEmpty())
 			throw new ArrayIndexOutOfBoundsException();
 		
-		int lastElement = this.stack.size()-1;
-		int topValue = this.stack.get(lastElement);
+		int topValue = this.top();
 		
-		this.stack.remove(lastElement);
+		this.stack.remove(this.getIndexOfLastElement());
 		
 		return topValue;
+	}
+	
+	private int getIndexOfLastElement(){
+		return this.stack.size()-1;
 	}
 
 }
