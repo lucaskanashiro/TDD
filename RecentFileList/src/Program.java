@@ -13,11 +13,19 @@ public class Program {
 		if(fileName == null || fileName.isEmpty())
 			throw new IllegalArgumentException();
 		
+		this.recentFileList.add(fileName);
 	}
 
-	public void getRecentFileList() throws RecentFileNullException {
+	public String getRecentFileList() throws RecentFileNullException {
 		if(this.recentFileList.isEmpty())
 			throw new RecentFileNullException();
+		
+		String list="";
+		
+		for(String file : this.recentFileList)
+			list += file;
+		
+		return list;
 	}
 
 }
