@@ -22,9 +22,11 @@ public class IntegerStack {
 		return this.stack.get(lastElement);
 	}
 
-	public void pop() {
-		// TODO Auto-generated method stub
+	public int pop() {
+		if(this.stack.isEmpty())
+			throw new ArrayIndexOutOfBoundsException();
 		
+		return 0;
 	}
 
 }
