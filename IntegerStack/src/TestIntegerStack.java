@@ -42,4 +42,15 @@ public class TestIntegerStack {
 		
 		stack.pop();
 	}
+	
+	@Test(expected=ArrayIndexOutOfBoundsException.class)
+	public void testPopInStackWithOnlyOneValueAndPopAgain(){
+		IntegerStack stack = new IntegerStack();
+		
+		stack.push(1);
+		
+		assertEquals(1, stack.pop());
+		
+		stack.pop();
+	}
 }

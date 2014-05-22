@@ -26,7 +26,12 @@ public class IntegerStack {
 		if(this.stack.isEmpty())
 			throw new ArrayIndexOutOfBoundsException();
 		
-		return 0;
+		int lastElement = this.stack.size()-1;
+		int topValue = this.stack.get(lastElement);
+		
+		this.stack.remove(lastElement);
+		
+		return topValue;
 	}
 
 }
