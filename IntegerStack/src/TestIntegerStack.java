@@ -35,4 +35,11 @@ public class TestIntegerStack {
 		
 		assertEquals(7, stack.top());
 	}
+	
+	@Test(expected=ArrayIndexOutOfBoundsException.class)
+	public void testPopWithoutElements(){
+		IntegerStack stack = new IntegerStack();
+		
+		stack.pop();
+	}
 }

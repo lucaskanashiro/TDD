@@ -22,4 +22,9 @@ public class IntegerStack {
 		return this.stack.get(lastElement);
 	}
 
+	public void pop() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }
