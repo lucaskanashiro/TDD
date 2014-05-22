@@ -42,9 +42,9 @@ public class TestPostfix {
 	
 	@Test
 	public void testExpressionWithOperatorOnly(){
-		Postfix postfix = new Postfix("+ - * /");
+		Postfix postfix = new Postfix("+-*/");
 		
-		assertEquals("+ - * /", postfix.convertInfix());
+		assertEquals("+-*/", postfix.convertInfix());
 	}
 	
 	@Test
@@ -59,9 +59,9 @@ public class TestPostfix {
 	
 	@Test 
 	public void testExpressionWithDiferentPrecedencesOperatorInDifferentPosicions(){
-		Postfix postfix = new Postfix("+ * / -");
+		Postfix postfix = new Postfix("+*/-");
 		
-		assertEquals("* / + -", postfix.convertInfix());
+		assertEquals("*/+-", postfix.convertInfix());
 		
 	}
 }

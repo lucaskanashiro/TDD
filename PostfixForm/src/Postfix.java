@@ -2,6 +2,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Stack;
 
+import org.hamcrest.core.IsEqual;
+
 
 public class Postfix {
 	
@@ -27,26 +29,26 @@ public class Postfix {
 			}	
 			
 			if(isOperator(this.expression.charAt(index))){
-				//convertExpression += this.expression.charAt(index);
 				if(!operator.isEmpty()){
 					if(this.checkOperatorPrecedence(operator.firstElement()) < this.checkOperatorPrecedence(this.expression.charAt(index)))
 						operator.push(this.expression.charAt(index));
 					else{
-						while(this.checkOperatorPrecedence(operator.firstElement()) >= this.checkOperatorPrecedence(this.expression.charAt(index)))
-							convertExpression += operator.pop();
+						while(!operator.isEmpty()){
+							if(this.checkOperatorPrecedence(operator.firstElement()) >= this.checkOperatorPrecedence(this.expression.charAt(index)))
+								convertExpression += operator.pop() + " ";
+							else
+								break;
+						}
 						operator.push(this.expression.charAt(index));
 					}
 				}
-				
-				
-				//if(index< this.expression.length()-1)
-					//convertExpression += " ";
+				else
+					operator.push(this.expression.charAt(index));
 			}
 		}
 		
 		for(int index=0; index<operator.size(); index++){
-			convertExpression += operator.get(operator.size()-1);
-			operator.remove(operator.size()-1);
+			convertExpression += operator.pop();
 		}
 		
 		return convertExpression;
