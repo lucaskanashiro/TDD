@@ -1,8 +1,9 @@
+import java.util.ArrayList;
 import java.util.HashMap;
 
 
 public class Postfix {
-
+	
 	private String expression;
 	
 	public Postfix(String expression) throws IllegalArgumentException {
@@ -14,6 +15,7 @@ public class Postfix {
 
 	public String convertInfix() {
 		String convertExpression="";
+		ArrayList<Character> operator = new ArrayList<Character>();
 		
 		for(int index=0; index<this.expression.length(); index++){
 			if(isDigit(this.expression.charAt(index))){
@@ -24,13 +26,19 @@ public class Postfix {
 			}	
 			
 			if(isOperator(this.expression.charAt(index))){
-				convertExpression += this.expression.charAt(index);
+				//convertExpression += this.expression.charAt(index);
 				
-				if(index< this.expression.length()-1)
-					convertExpression += " ";
+				operator.add(this.expression.charAt(index));				
+				
+				//if(index< this.expression.length()-1)
+					//convertExpression += " ";
 			}
 		}
 		
+		for (int index = 0; index<operator.size()-1; index++){
+			convertExpression += this.checkOperatorPrecedence(operator.get(index), operator.get(index+1));
+				 
+		}
 		return convertExpression;
 	}
 

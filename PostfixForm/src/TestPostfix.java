@@ -56,4 +56,12 @@ public class TestPostfix {
 		assertEquals('/', postfix.checkOperatorPrecedence('-','/'));
 		assertEquals('*', postfix.checkOperatorPrecedence('*','/'));
 	}
+	
+	@Test 
+	public void testExpressionWithDiferentPrecedencesOperatorInDifferentPosicions(){
+		Postfix postfix = new Postfix("+ * / -");
+		
+		assertEquals("* / + -", postfix.convertInfix());
+		
+	}
 }
