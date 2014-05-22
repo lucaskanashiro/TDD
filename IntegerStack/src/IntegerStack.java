@@ -21,9 +21,6 @@ public class IntegerStack {
 	}
 
 	public int pop() {
-		if(this.stack.isEmpty())
-			throw new ArrayIndexOutOfBoundsException();
-		
 		int topValue = this.top();
 		
 		this.stack.remove(this.getIndexOfLastElement());
