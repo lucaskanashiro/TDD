@@ -19,14 +19,14 @@ public class TestPostfix {
 	
 	@Test
 	public void testExpressionWithNumberOnly(){
-		Postfix postfix = new Postfix("1 2 3 4 5");
+		Postfix postfix = new Postfix("12345");
 		
-		assertEquals("1 2 3 4 5", postfix.convertInfix());
+		assertEquals("12345", postfix.convertInfix());
 	}
 	
 	@Test
 	public void testIsDigit(){
-		Postfix postfix = new Postfix("1 2 3 4 5");
+		Postfix postfix = new Postfix("12345");
 		
 		assertTrue(postfix.isDigit('3'));
 		assertFalse(postfix.isDigit('a'));
@@ -34,7 +34,7 @@ public class TestPostfix {
 	
 	@Test
 	public void testIsOperator(){
-		Postfix postfix = new Postfix("+ - / *");
+		Postfix postfix = new Postfix("+-/*");
 		
 		assertTrue(postfix.isOperator('+'));
 		assertFalse(postfix.isOperator('3'));
@@ -49,7 +49,7 @@ public class TestPostfix {
 	
 	@Test
 	public void testPrecedenceOfOperator(){
-		Postfix postfix = new Postfix("+ - * /");
+		Postfix postfix = new Postfix("+-*/");
 		
 		assertEquals(1, postfix.checkOperatorPrecedence('+'));
 		assertEquals(1, postfix.checkOperatorPrecedence('-'));
