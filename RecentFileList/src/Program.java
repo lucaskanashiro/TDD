@@ -13,23 +13,28 @@ public class Program {
 		if(fileName == null || fileName.isEmpty())
 			throw new IllegalArgumentException();
 		
-		boolean findEqual=false;
-		int indexSameFile = 0;
-		
-		for(int index=0; index<this.recentFileList.size(); index++){
-			if(fileName.equals(this.recentFileList.get(index))){
-				findEqual=true;
-				indexSameFile = index;
-				break;
-				
-			}
-		}
-		
-		if(findEqual){
-			this.recentFileList.remove(indexSameFile);
-			this.recentFileList.add(0, fileName);
-		} else
+		if(this.recentFileList.size() == 15){
+			this.recentFileList.remove(0);
 			this.recentFileList.add(fileName);
+		} else{
+			boolean findEqual=false;
+			int indexSameFile = 0;
+			
+			for(int index=0; index<this.recentFileList.size(); index++){
+				if(fileName.equals(this.recentFileList.get(index))){
+					findEqual=true;
+					indexSameFile = index;
+					break;
+					
+				}
+			}
+			
+			if(findEqual){
+				this.recentFileList.remove(indexSameFile);
+				this.recentFileList.add(0, fileName);
+			} else
+				this.recentFileList.add(fileName);
+		}
 	}
 
 	public String getRecentFileList() throws RecentFileNullException {
