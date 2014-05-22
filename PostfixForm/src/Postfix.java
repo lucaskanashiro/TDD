@@ -1,5 +1,4 @@
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Stack;
 
@@ -25,12 +24,13 @@ public class Postfix {
 			}	
 			
 			if(isOperator(this.expression.charAt(index))){
+				
 				if(!operator.isEmpty()){
-					if(this.checkOperatorPrecedence(operator.firstElement()) < this.checkOperatorPrecedence(this.expression.charAt(index)))
+					if(this.checkOperatorPrecedence(operator.lastElement()) < this.checkOperatorPrecedence(this.expression.charAt(index)))
 						operator.push(this.expression.charAt(index));
 					else{
-						while(!operator.isEmpty()){
-							if(this.checkOperatorPrecedence(operator.firstElement()) >= this.checkOperatorPrecedence(this.expression.charAt(index)))
+						while(!operator.isEmpty()){	
+							if(this.checkOperatorPrecedence(operator.lastElement()) >= this.checkOperatorPrecedence(this.expression.charAt(index)))
 								convertExpression += operator.pop();
 							else
 								break;
@@ -38,7 +38,7 @@ public class Postfix {
 						operator.push(this.expression.charAt(index));
 					}
 				}
-				else
+				else		
 					operator.push(this.expression.charAt(index));
 			}
 		}

@@ -61,7 +61,13 @@ public class TestPostfix {
 	public void testExpressionWithDiferentPrecedencesOperatorInDifferentPosicions(){
 		Postfix postfix = new Postfix("+*-");
 		
-		assertEquals("*+-", postfix.convertInfix());
+		assertEquals("*+-", postfix.convertInfix());	
+	}
+	
+	@Test
+	public void testExpressionWithNumbersAndOperators(){
+		Postfix postfix = new Postfix("1+2*3-4");
 		
+		assertEquals("123*+4-", postfix.convertInfix());
 	}
 }
